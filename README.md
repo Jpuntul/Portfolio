@@ -54,16 +54,13 @@ yarn dev
 ├── index.html
 ├── package.json
 ├── README.md
-├── tailwind.config.js  # Tailwind CSS configuration
-├── tsconfig.json       # TypeScript configuration
-├── tsconfig.node.json  # TypeScript node configuration
 └── vite.config.ts      # Vite configuration
 ```
 
 ## 🔧 Technologies Used
 
 - [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [JavaScript]([https://www.typescriptlang.org](https://www.javascript.com/)/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/)
 
