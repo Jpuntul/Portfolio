@@ -1,4 +1,18 @@
+
 @import "tailwindcss";
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .hero-gradient {
+    background: linear-gradient(135deg, #22c55e 0%, #0ea5e9 50%, #0369a1 100%);
+  }
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

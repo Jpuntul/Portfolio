@@ -4,13 +4,7 @@ import { FaHome, FaArrowLeft } from 'react-icons/fa'
 const NotFound = () => {
   return (
     <>
-      <style jsx>{`
-        .nature-gradient {
-          background: linear-gradient(135deg, #22c55e 0%, #0ea5e9 50%, #0369a1 100%);
-        }
-      `}</style>
-      
-      <div className="pt-20 min-h-screen flex items-center justify-center nature-gradient">
+      <div className="pt-20 min-h-screen flex items-center justify-center hero-gradient">
         <div className="text-center text-white px-6">
           <h1 className="text-9xl font-bold mb-4 opacity-50">404</h1>
           <h2 className="text-4xl font-bold mb-6">Page Not Found</h2>

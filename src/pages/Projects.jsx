@@ -37,42 +37,19 @@ const Projects = () => {
 
   return (
     <>
-      <style jsx>{`
-        .nature-gradient {
-          background: linear-gradient(135deg, #22c55e 0%, #0ea5e9 50%, #0369a1 100%);
-        }
-        .fade-in {
-          animation: fadeIn 0.8s ease-out;
-        }
-        @keyframes fadeIn {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .stagger-in {
-          animation: fadeInUp 0.6s ease-out;
-        }
-        @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(30px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-
       <div>
         {/* Hero Section */}
-        <section className="pt-40 pb-20 nature-gradient">
-          <div className="container mx-auto px-6 text-center">
-            <div className="fade-in">
-              <h1 className="text-5xl font-bold text-white mb-6">
-                My Projects
-              </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                A comprehensive showcase of my software development projects, 
-                demonstrating my skills across different technologies and domains.
-              </p>
-            </div>
+        <section className="pt-40 pb-20 hero-gradient">
+          <div className="container mx-auto px-6 text-center fade-in">
+            <h1 className="text-5xl font-bold text-white mb-6">
+              My Projects
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              A comprehensive showcase of my software development projects, 
+              demonstrating my skills across different technologies and domains.
+            </p>
           </div>
         </section>
-
 
         {/* Projects Grid */}
         <section className="py-20 bg-gray-50">

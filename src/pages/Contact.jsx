@@ -27,16 +27,12 @@ const Contact = () => {
     
     try {
       // EmailJS configuration
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'demo_service'
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'demo_template'
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'demo_key'
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY 
       
-      // For demo purposes, we'll simulate success if no env vars are set
-      if (serviceId === 'demo_service' || templateId === 'demo_template' || publicKey === 'demo_key') {
-        // Demo mode - simulate success
-        await new Promise(resolve => setTimeout(resolve, 1500))
-        console.log('Demo mode: Form data would be sent:', formData)
-        setSubmitStatus('success')
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS environment variables are not set properly.')
       } else {
         // Real EmailJS integration
         const templateParams = {
@@ -102,56 +98,27 @@ const Contact = () => {
 
   return (
     <>
-      <style jsx>{`
-        .nature-gradient {
-          background: linear-gradient(135deg, #22c55e 0%, #0ea5e9 50%, #0369a1 100%);
-        }
-        .fade-in {
-          animation: fadeIn 0.8s ease-out;
-        }
-        @keyframes fadeIn {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .slide-in-left {
-          animation: slideInLeft 0.6s ease-out;
-        }
-        @keyframes slideInLeft {
-          0% { transform: translateX(-100%); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-        .slide-in-right {
-          animation: slideInRight 0.6s ease-out;
-        }
-        @keyframes slideInRight {
-          0% { transform: translateX(100%); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-      `}</style>
-
-      <div className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 nature-gradient">
-          <div className="container mx-auto px-6 text-center">
-            <div className="fade-in">
-              <h1 className="text-5xl font-bold text-white mb-6">
-                Get In Touch
-              </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                I'm always interested in discussing new opportunities, collaborating on projects, 
-                or just having a conversation about technology and software engineering.
-              </p>
-            </div>
+      <div>
+        {/* Contact Header Section */}
+        <section className="pt-24 pb-16 hero-gradient">
+          <div className="container mx-auto px-6 text-center fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+              Get In Touch
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              I'm always interested in discussing new opportunities, collaborating on projects, 
+              or just having a conversation about technology and software engineering.
+            </p>
           </div>
         </section>
 
         {/* Main Contact Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               
               {/* Contact Information */}
-              <div className="slide-in-left">
+              <div className="fade-in">
                 <h2 className="text-3xl font-bold text-gray-800 mb-8">
                   Let's Connect
                 </h2>
@@ -213,7 +180,7 @@ const Contact = () => {
               </div>
 
               {/* Contact Form */}
-              <div className="slide-in-right">
+              <div className="fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
                 <div className="bg-white rounded-2xl shadow-xl p-8">
                   <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
                     <FaPaperPlane className="text-green-500" />

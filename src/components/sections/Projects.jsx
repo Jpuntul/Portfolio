@@ -70,6 +70,15 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      {/* View All Projects Button */}
+      <div className="mt-12 flex justify-center">
+        <a
+          href="/projects"
+          className="inline-block bg-green-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-105"
+        >
+          View All Projects
+        </a>
+      </div>
     </section>
   )
 }

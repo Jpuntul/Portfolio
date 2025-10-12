@@ -43,38 +43,23 @@ const About = () => {
 
   return (
     <>
-      <style jsx>{`
-        .nature-gradient {
-          background: linear-gradient(135deg, #22c55e 0%, #0ea5e9 50%, #0369a1 100%);
-        }
-        .fade-in {
-          animation: fadeIn 0.8s ease-out;
-        }
-        @keyframes fadeIn {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-
       <div>
         {/* Hero Section */}
-        <section className="pt-40 pb-20 nature-gradient">
-          <div className="container mx-auto px-6 text-center">
-            <div className="fade-in">
-              <h1 className="text-5xl font-bold text-white mb-6">
-                More About Me
-              </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                Deep dive into my educational background, learning approach, 
-                and what I'm currently focused on in my software engineering journey.
-              </p>
-            </div>
+        <section className="pt-40 pb-20 hero-gradient">
+          <div className="container mx-auto px-6 text-center fade-in">
+            <h1 className="text-5xl font-bold text-white mb-6">
+              More About Me
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Deep dive into my educational background, learning approach, 
+              and what I'm currently focused on in my software engineering journey.
+            </p>
           </div>
         </section>
 
         {/* Educational Background & Approach */}
         <section className="py-20 bg-white">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-6 fade-in">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
                 My Background & Approach
@@ -84,7 +69,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
               {background.map((section, index) => (
                 <div 
                   key={index}
