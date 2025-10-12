@@ -1,6 +1,7 @@
 // src/pages/Contact.jsx
 import { useState } from 'react'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaUser, FaPaperPlane } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 import { personalInfo } from '../data/portfolio'
 
 const Contact = () => {
@@ -24,12 +25,35 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission (replace with actual email service like EmailJS)
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      setSubmitStatus('success')
+      // EmailJS configuration
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'demo_service'
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'demo_template'
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'demo_key'
+      
+      // For demo purposes, we'll simulate success if no env vars are set
+      if (serviceId === 'demo_service' || templateId === 'demo_template' || publicKey === 'demo_key') {
+        // Demo mode - simulate success
+        await new Promise(resolve => setTimeout(resolve, 1500))
+        console.log('Demo mode: Form data would be sent:', formData)
+        setSubmitStatus('success')
+      } else {
+        // Real EmailJS integration
+        const templateParams = {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: personalInfo.name,
+        }
+        
+        await emailjs.send(serviceId, templateId, templateParams, publicKey)
+        setSubmitStatus('success')
+      }
+      
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {
+      console.error('EmailJS Error:', error)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
