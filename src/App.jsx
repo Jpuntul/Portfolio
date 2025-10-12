@@ -7,11 +7,12 @@ import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import './App.css'
+import BackToTop from './components/BackToTop'
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -21,6 +22,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <BackToTop />
       </div>
     </Router>
   )

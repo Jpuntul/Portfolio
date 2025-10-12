@@ -51,21 +51,21 @@ export const projects = [
 
 export const skills = {
   "Programming Languages": [
-    { name: "JavaScript", level: 80 },
-    { name: "Python", level: 75 },
-    { name: "Java", level: 70 },
-    { name: "TypeScript", level: 65 }
+    { name: "JavaScript", experience: "Proficient" },
+    { name: "Python", experience: "Experienced" },
+    { name: "Java", experience: "Experienced" },
+    { name: "TypeScript", experience: "Experienced" }
   ],
   "Frontend": [
-    { name: "React", level: 80 },
-    { name: "HTML/CSS", level: 85 },
-    { name: "Tailwind CSS", level: 75 },
-    { name: "Vue.js", level: 60 }
+    { name: "React", experience: "Proficient" },
+    { name: "HTML/CSS", experience: "Proficient" },
+    { name: "Tailwind CSS", experience: "Experienced" },
+    { name: "Vue.js", experience: "Familiar" }
   ],
   "Backend": [
-    { name: "Node.js", level: 75 },
-    { name: "Express.js", level: 70 },
-    { name: "SQL", level: 80 },
-    { name: "Django", level: 65 },
+    { name: "Node.js", experience: "Proficient" },
+    { name: "SQL", experience: "Experienced" },
+    { name: "Django", experience: "Experienced" },
+    { name: "MongoDB", experience: "Experienced" },
   ]
 }

@@ -48,7 +48,7 @@ const Hero = () => {
             Currently pursuing Software Engineering at {personalInfo.university}.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-18">
             <a 
               href="#projects" 
               className="bg-white text-green-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg"

@@ -3,12 +3,6 @@ import { skills } from '../../data/portfolio'
 const Skills = () => {
   return (
     <>
-      <style jsx>{`
-        .forest-gradient {
-          background: linear-gradient(to right, #22c55e, #0ea5e9);
-        }
-      `}</style>
-
       <section id="skills" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -16,7 +10,7 @@ const Skills = () => {
               Skills & Technologies
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Technologies I work with and my proficiency levels.
+              Technologies I work with, grouped by experience level.
             </p>
           </div>
 
@@ -28,22 +22,25 @@ const Skills = () => {
                 style={{animationDelay: `${categoryIndex * 0.2}s`}}
               >
                 <h3 className="text-xl font-semibold text-gray-800 mb-6">{category}</h3>
-                <div className="space-y-4">
+                <ul className="space-y-2">
                   {skillList.map((skill, skillIndex) => (
-                    <div key={skill.name} style={{animationDelay: `${(categoryIndex * skillList.length + skillIndex) * 0.1}s`}}>
-                      <div className="flex justify-between text-sm mb-2">
-                        <span className="text-gray-700 font-medium">{skill.name}</span>
-                        <span className="text-gray-500">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="forest-gradient h-2 rounded-full transition-all duration-1000 ease-out"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
+                    <li key={skill.name} className="flex justify-between items-center text-sm">
+                      <span className="text-gray-700 font-medium">{skill.name}</span>
+                      <span
+                        className={
+                          `px-2 py-0.5 rounded-full border text-xs font-semibold ` +
+                          (skill.experience === 'Proficient'
+                            ? 'bg-green-100 border-green-300 text-green-700'
+                            : skill.experience === 'Experienced'
+                              ? 'bg-blue-100 border-blue-300 text-blue-700'
+                              : 'bg-gray-100 border-gray-300 text-gray-600')
+                        }
+                      >
+                        {skill.experience}
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ))}
           </div>
