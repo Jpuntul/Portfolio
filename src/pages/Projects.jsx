@@ -1,53 +1,112 @@
 // src/pages/Projects.jsx
-import { useState, useEffect } from 'react'
-import { FaGithub, FaExternalLinkAlt, FaFilter, FaSearch } from 'react-icons/fa'
-import { projects } from '../data/portfolio'
+import { useState, useEffect } from "react";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaFilter,
+  FaSearch,
+} from "react-icons/fa";
+import { projects } from "../data/portfolio";
+import ProjectDetail from "../components/ProjectDetail";
 
 const Projects = () => {
-  const [filteredProjects, setFilteredProjects] = useState(projects)
-  const [activeFilter, setActiveFilter] = useState('all')
-  const [searchTerm, setSearchTerm] = useState('')
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = ['all', 'web', 'mobile', 'ai/ml', 'desktop']
+  // Dynamically extract all unique categories from project data
+  const categories = [
+    "all",
+    ...Array.from(
+      new Set(
+        projects
+          .flatMap((p) => p.category.split(","))
+          .map((cat) => cat.trim().toLowerCase()),
+      ),
+    ).sort((a, b) => a.localeCompare(b)),
+  ];
 
   // Filter and search functionality
   useEffect(() => {
-    let filtered = projects
+    let filtered = projects;
 
-    // Filter by category
-    if (activeFilter !== 'all') {
-      filtered = filtered.filter(project => project.category === activeFilter)
+    // Filter by category (support multiple categories per project)
+    if (activeFilter !== "all") {
+      filtered = filtered.filter((project) =>
+        project.category
+          .split(",")
+          .map((cat) => cat.trim().toLowerCase())
+          .includes(activeFilter.toLowerCase()),
+      );
     }
 
     // Filter by search term
     if (searchTerm) {
-      filtered = filtered.filter(project => 
-        project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.technologies.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()))
-      )
+      filtered = filtered.filter(
+        (project) =>
+          project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          project.shortDesc.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          project.technologies.some((tech) =>
+            tech.toLowerCase().includes(searchTerm.toLowerCase()),
+          ),
+      );
     }
 
-    setFilteredProjects(filtered)
-  }, [activeFilter, searchTerm])
+    setFilteredProjects(filtered);
+  }, [activeFilter, searchTerm]);
 
   const handleFilterChange = (filter) => {
-    setActiveFilter(filter)
-  }
+    setActiveFilter(filter);
+  };
 
   return (
     <>
+      <ProjectDetail
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
       <div>
         {/* Hero Section */}
         <section className="pt-40 pb-20 hero-gradient">
           <div className="container mx-auto px-6 text-center fade-in">
-            <h1 className="text-5xl font-bold text-white mb-6">
-              My Projects
-            </h1>
+            <h1 className="text-5xl font-bold text-white mb-6">My Projects</h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              A comprehensive showcase of my software development projects, 
+              A comprehensive showcase of my software development projects,
               demonstrating my skills across different technologies and domains.
             </p>
+          </div>
+        </section>
+
+        {/* Filter Bar */}
+        <section className="bg-gray-50 pt-8 pb-0">
+          <div className="container mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 fade-in">
+            <div className="flex flex-wrap gap-2 items-center">
+              <FaFilter className="text-gray-500 mr-2" />
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => handleFilterChange(cat)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border border-gray-200 focus:outline-none ${
+                    activeFilter === cat
+                      ? "bg-green-500 text-white border-green-500 shadow"
+                      : "bg-white text-gray-700 hover:bg-green-100"
+                  }`}
+                >
+                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center gap-2">
+              <FaSearch className="text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="px-4 py-2 rounded-full border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none bg-white text-gray-700 w-64"
+              />
+            </div>
           </div>
         </section>
 
@@ -56,12 +115,16 @@ const Projects = () => {
           <div className="container mx-auto px-6">
             {filteredProjects.length === 0 ? (
               <div className="text-center py-20">
-                <h3 className="text-2xl font-semibold text-gray-600 mb-4">No projects found</h3>
-                <p className="text-gray-500">Try adjusting your search or filter criteria.</p>
+                <h3 className="text-2xl font-semibold text-gray-600 mb-4">
+                  No projects found
+                </h3>
+                <p className="text-gray-500">
+                  Try adjusting your search or filter criteria.
+                </p>
                 <button
                   onClick={() => {
-                    setActiveFilter('all')
-                    setSearchTerm('')
+                    setActiveFilter("all");
+                    setSearchTerm("");
                   }}
                   className="mt-4 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors"
                 >
@@ -71,22 +134,28 @@ const Projects = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProjects.map((project, index) => (
-                  <div 
+                  <div
                     key={project.id}
-                    className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 stagger-in"
-                    style={{animationDelay: `${index * 0.1}s`}}
+                    className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 stagger-in flex flex-col h-full cursor-pointer"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                    onClick={() => setSelectedProject(project)}
                   >
                     {/* Project Image */}
                     <div className="relative group">
-                      <img 
-                        src={project.image} 
+                      <img
+                        src={project.image}
                         alt={project.title}
                         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="absolute top-4 right-4">
-                        <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium capitalize">
-                          {project.category}
-                        </span>
+                        {project.category.split(",").map((cat, idx) => (
+                          <span
+                            key={cat.trim() + idx}
+                            className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium capitalize mr-2 last:mr-0"
+                          >
+                            {cat.trim()}
+                          </span>
+                        ))}
                       </div>
                       {project.featured && (
                         <div className="absolute top-4 left-4">
@@ -98,9 +167,11 @@ const Projects = () => {
                       {/* Hover Overlay */}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="text-white text-center">
-                          <p className="text-lg font-semibold mb-2">View Project</p>
+                          <p className="text-lg font-semibold mb-2">
+                            View Project
+                          </p>
                           <div className="flex gap-4 justify-center">
-                            <a 
+                            <a
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -109,7 +180,7 @@ const Projects = () => {
                               <FaGithub />
                             </a>
                             {project.demo && (
-                              <a 
+                              <a
                                 href={project.demo}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -122,64 +193,74 @@ const Projects = () => {
                         </div>
                       </div>
                     </div>
-                    
                     {/* Project Content */}
-                    <div className="p-6">
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-xl font-semibold text-gray-800">{project.title}</h3>
-                        <span className="text-sm text-gray-500">{project.year}</span>
-                      </div>
-                      
-                      <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
-                      
-                      {/* Technologies */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.slice(0, 4).map(tech => (
-                          <span 
-                            key={tech}
-                            className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
-                          >
-                            {tech}
+                    <div className="flex flex-col flex-grow">
+                      <div className="p-6 flex-1 flex flex-col">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-xl font-semibold text-gray-800">
+                            {project.title}
+                          </h3>
+                          <span className="text-sm text-gray-500">
+                            {project.year}
                           </span>
-                        ))}
-                        {project.technologies.length > 4 && (
-                          <span className="text-gray-500 text-sm self-center">
-                            +{project.technologies.length - 4} more
-                          </span>
-                        )}
-                      </div>
-                      
-                      {/* Project Links */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex gap-4">
-                          <a 
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors font-medium"
-                          >
-                            <FaGithub /> Code
-                          </a>
-                          {project.demo && (
-                            <a 
-                              href={project.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                        </div>
+                        <p className="text-gray-600 mb-4 line-clamp-3">
+                          {project.shortDesc}
+                        </p>
+                        {/* Technologies */}
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies.slice(0, 4).map((tech) => (
+                            <span
+                              key={tech}
+                              className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
                             >
-                              <FaExternalLinkAlt /> Demo
-                            </a>
+                              {tech}
+                            </span>
+                          ))}
+                          {project.technologies.length > 4 && (
+                            <span className="text-gray-500 text-sm self-center">
+                              +{project.technologies.length - 4} more
+                            </span>
                           )}
                         </div>
-                        {project.status && (
-                          <span className={`text-sm px-2 py-1 rounded-full ${
-                            project.status === 'completed' 
-                              ? 'bg-green-100 text-green-700' 
-                              : 'bg-yellow-100 text-yellow-700'
-                          }`}>
-                            {project.status === 'completed' ? 'Completed' : 'In Progress'}
-                          </span>
-                        )}
+                      </div>
+                      {/* Project Links - always at the bottom */}
+                      <div className="px-6 pb-6 mt-auto">
+                        <div className="flex items-center justify-between">
+                          <div className="flex gap-4">
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors font-medium"
+                            >
+                              <FaGithub /> Code
+                            </a>
+                            {project.demo && (
+                              <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                              >
+                                <FaExternalLinkAlt /> Demo
+                              </a>
+                            )}
+                          </div>
+                          {project.status && (
+                            <span
+                              className={`text-sm px-2 py-1 rounded-full ${
+                                project.status === "Completed"
+                                  ? "bg-green-100 text-green-700"
+                                  : "bg-yellow-100 text-yellow-700"
+                              }`}
+                            >
+                              {project.status === "Completed"
+                                ? "Completed"
+                                : "Ongoing"}
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -190,7 +271,7 @@ const Projects = () => {
         </section>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;
