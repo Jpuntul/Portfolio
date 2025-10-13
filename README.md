@@ -1,77 +1,84 @@
-# Personal Portfolio Website
-A portfolio website built with React, TypeScript, and Tailwind CSS.
+
+# Jutipong Puntuleng — Personal Portfolio Website
+A modern portfolio website built with React, Vite, and Tailwind CSS.
+
+## ✨ Overview
+This site showcases my software engineering projects, skills, and experience. Explore my featured work, learn about my background, and get in touch!
+
 
 ## Table of Contents
-
 - [Getting Started](#-getting-started)
 - [Project Structure](#-project-structure)
 - [Technologies Used](#-technologies-used)
-- [Acknowledgments](#-acknowledgments)
+- [Features](#-features)
 - [Contact](#-contact)
 
-## 🚀 Getting Started
-### Prerequisites
 
-- Node.js (v14.0.0 or later)
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18 or later recommended)
 - npm or yarn
 
 ### Installation
-
-1. Clone the repository:
-
-```
-git clone https://github.com/yourusername/portfolio.git
+```sh
+git clone https://github.com/Jpuntul/portfolio.git
 cd portfolio
-```
-
-2. Install dependencies:
-
-```
 npm install
 # or
 yarn
-```
-
-3. Start the development server:
-```
 npm run dev
 # or
-yarn dev
-```
 
-4. Open http://localhost:5173/ in your browser.
+```
+Then open [http://localhost:5173/](http://localhost:5173/) in your browser.
 
 ## 📁 Project Structure
 ```
 /
-├── public/             # Static files
+├── public/             # Static files (images, favicon, etc.)
 ├── src/
-│   ├── assets/
-│   ├── App.tsx         # Main App component
+│   ├── assets/         # Static assets (SVGs, etc.)
+│   ├── components/     # Reusable React components
+│   ├── data/           # Portfolio data (projects, skills, info)
+│   ├── pages/          # Page components (Home, About, Projects, Contact)
+│   ├── App.jsx         # Main App component
 │   ├── index.css       # Global styles and Tailwind directives
-│   └── main.tsx        # Entry point
+│   └── main.jsx        # Entry point
 ├── .gitignore
 ├── index.html
 ├── package.json
 ├── README.md
-└── vite.config.ts      # Vite configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+├── vite.config.js      # Vite configuration
 ```
 
+
 ## 🔧 Technologies Used
-
 - [React](https://reactjs.org/)
-- [JavaScript]([https://www.typescriptlang.org](https://www.javascript.com/)/)
-- [Tailwind CSS](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [EmailJS](https://www.emailjs.com/) (Contact form)
+- [React Router](https://reactrouter.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-## 🙏 Acknowledgments
 
-- Design inspiration from various portfolio websites
-- Icons from [Heroicons](https://heroicons.com/)
+
+## ✨ Features
+This portfolio includes:
+
+- Responsive design for desktop and mobile
+- Animated hero and section transitions
+- Filterable and searchable project gallery
+- Contact form with EmailJS integration
+- Skills and experience overview
+- Clean, modern UI with Tailwind CSS
+
+See the Projects page for a full list of my work!
+
 
 ## 📬 Contact
-If you have any questions or suggestions, feel free to reach out:
-
+Questions or suggestions? Feel free to reach out:
 - Email: p.jutipong13@gmail.com
-- LinkedIn: www.linkedin.com/in/jpuntul
-- GitHub: https://github.com/Jpuntul
+- LinkedIn: [jpuntul](https://www.linkedin.com/in/jpuntul)
+- GitHub: [Jpuntul](https://github.com/Jpuntul)
