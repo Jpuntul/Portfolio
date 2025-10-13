@@ -24,12 +24,8 @@ This site showcases my software engineering projects, skills, and experience. Ex
 ```sh
 git clone https://github.com/Jpuntul/portfolio.git
 cd portfolio
-npm install
-# or
-yarn
-npm run dev
-# or
-
+npm install # or yarn
+npm run dev # or yarn dev
 ```
 Then open [http://localhost:5173/](http://localhost:5173/) in your browser.
 
