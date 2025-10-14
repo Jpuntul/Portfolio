@@ -34,17 +34,24 @@ const Projects = () => {
                       alt={project.title}
                       className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute top-4 right-4">
+                    <div className="absolute top-4 right-4 flex flex-col items-end gap-1">
+                      {project.role && (
+                        <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase mb-1 tracking-wide">
+                          {project.role}
+                        </span>
+                      )}
                       <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {project.category}
+                        {project.category.split(",")[0].trim()}
                       </span>
                     </div>
                   </div>
                   <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    <h3 className="text-left text-xl font-semibold text-gray-800 mb-2">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 mb-4">{project.shortDesc}</p>
+                    <p className="text-left text-gray-600 mb-4">
+                      {project.shortDesc}
+                    </p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.slice(0, 3).map((tech) => (
                         <span

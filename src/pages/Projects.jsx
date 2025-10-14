@@ -6,12 +6,15 @@ import {
   FaFilter,
   FaSearch,
 } from "react-icons/fa";
+import CustomDropdown from "../components/CustomDropdown";
 import { projects } from "../data/portfolio";
 import ProjectDetail from "../components/ProjectDetail";
 
 const Projects = () => {
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [activeFilter, setActiveFilter] = useState("all");
+  const [activeStatus, setActiveStatus] = useState("all");
+  const [activeRole, setActiveRole] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -27,6 +30,16 @@ const Projects = () => {
     ).sort((a, b) => a.localeCompare(b)),
   ];
 
+  // Dynamically extract all unique roles from project data
+  const roles = [
+    "all",
+    ...Array.from(new Set(projects.map((p) => (p.role || "").trim()))).filter(
+      Boolean,
+    ),
+  ];
+
+  const statusOptions = ["all", "Completed", "Ongoing"];
+
   // Filter and search functionality
   useEffect(() => {
     let filtered = projects;
@@ -38,6 +51,22 @@ const Projects = () => {
           .split(",")
           .map((cat) => cat.trim().toLowerCase())
           .includes(activeFilter.toLowerCase()),
+      );
+    }
+
+    // Filter by status
+    if (activeStatus !== "all") {
+      filtered = filtered.filter(
+        (project) =>
+          (project.status || "").toLowerCase() === activeStatus.toLowerCase(),
+      );
+    }
+
+    // Filter by role
+    if (activeRole !== "all") {
+      filtered = filtered.filter(
+        (project) =>
+          (project.role || "").toLowerCase() === activeRole.toLowerCase(),
       );
     }
 
@@ -54,10 +83,14 @@ const Projects = () => {
     }
 
     setFilteredProjects(filtered);
-  }, [activeFilter, searchTerm]);
+  }, [activeFilter, activeStatus, activeRole, searchTerm]);
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
+  };
+
+  const handleStatusChange = (status) => {
+    setActiveStatus(status);
   };
 
   return (
@@ -80,31 +113,49 @@ const Projects = () => {
 
         {/* Filter Bar */}
         <section className="bg-gray-50 pt-8 pb-0">
-          <div className="container mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 fade-in">
-            <div className="flex flex-wrap gap-2 items-center">
-              <FaFilter className="text-gray-500 mr-2" />
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => handleFilterChange(cat)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border border-gray-200 focus:outline-none ${
-                    activeFilter === cat
-                      ? "bg-green-500 text-white border-green-500 shadow"
-                      : "bg-white text-gray-700 hover:bg-green-100"
-                  }`}
-                >
-                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                </button>
-              ))}
+          <div className="container mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6 fade-in">
+            {/* Role Filter Dropdown */}
+            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+              <CustomDropdown
+                options={roles}
+                value={activeRole}
+                onChange={setActiveRole}
+                label="Role"
+                color="purple"
+              />
             </div>
-            <div className="flex items-center gap-2">
+            {/* Category Filter Dropdown */}
+            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+              <div className="flex items-center mb-1 md:mb-0">
+                <FaFilter className="text-gray-500 mr-2" />
+              </div>
+              <CustomDropdown
+                options={categories}
+                value={activeFilter}
+                onChange={handleFilterChange}
+                label="Category"
+                color="green"
+              />
+            </div>
+            {/* Status Filter Dropdown */}
+            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+              <CustomDropdown
+                options={statusOptions}
+                value={activeStatus}
+                onChange={handleStatusChange}
+                label="Status"
+                color="blue"
+              />
+            </div>
+            {/* Search Bar */}
+            <div className="flex items-center gap-2 self-end md:self-end">
               <FaSearch className="text-gray-400" />
               <input
                 type="text"
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="px-4 py-2 rounded-full border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none bg-white text-gray-700 w-64"
+                className="px-4 py-2 rounded-full border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none bg-white text-gray-700 w-64 shadow-sm"
               />
             </div>
           </div>
@@ -147,15 +198,17 @@ const Projects = () => {
                         alt={project.title}
                         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                       />
-                      <div className="absolute top-4 right-4">
-                        {project.category.split(",").map((cat, idx) => (
-                          <span
-                            key={cat.trim() + idx}
-                            className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium capitalize mr-2 last:mr-0"
-                          >
-                            {cat.trim()}
+                      <div className="absolute top-4 right-4 flex flex-col items-end gap-1">
+                        {/* Role badge */}
+                        {project.role && (
+                          <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase mb-1 tracking-wide">
+                            {project.role}
                           </span>
-                        ))}
+                        )}
+                        {/* Only show the first category badge */}
+                        <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium capitalize">
+                          {project.category.split(",")[0].trim()}
+                        </span>
                       </div>
                       {project.featured && (
                         <div className="absolute top-4 left-4">
@@ -204,7 +257,7 @@ const Projects = () => {
                             {project.year}
                           </span>
                         </div>
-                        <p className="text-gray-600 mb-4 line-clamp-3">
+                        <p className="text-left text-gray-600 mb-4 line-clamp-3">
                           {project.shortDesc}
                         </p>
                         {/* Technologies */}
