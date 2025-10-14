@@ -160,6 +160,45 @@ export const projects = [
     status: "Completed",
     features: ["Pet Listings", "Adoption Forms", "Responsive Design"],
   },
+  {
+    id: 10,
+    role: "Full Stack",
+    title: "Personal Portfolio",
+    shortDesc:
+      "Modern, responsive portfolio website to showcase my projects and skills.",
+    description: `This portfolio website was designed and built by me to showcase my software engineering projects, skills, and experience. It features a modern UI, advanced filtering, project modals, and a featured projects carousel. The site is built with React, Vite, and Tailwind CSS, and includes automated code quality tools (Husky, lint-staged, Prettier, ESLint) for a professional workflow.
+
+  Key Features:
+  - Responsive design for all devices
+  - Dynamic project filtering by category, status, and role
+  - Project detail modals with click-outside/Escape close
+  - Featured projects carousel
+  - Automated code formatting and linting on commit
+  - Custom dropdowns and branded UI elements
+
+  This project demonstrates my ability to design, develop, and maintain a modern web application from scratch.`,
+    image: "/images/projects/portfolio.png",
+    technologies: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Husky",
+      "Prettier",
+      "ESLint",
+    ],
+    github: "https://github.com/Jpuntul/Portfolio",
+    demo: "",
+    category: "Web",
+    status: "Completed",
+    features: [
+      "Responsive Design",
+      "Project Filtering",
+      "Featured Carousel",
+      "Modal UI",
+      "Automated Linting/Formatting",
+    ],
+    highlight: true,
+  },
 ];
 
 export const skills = {
