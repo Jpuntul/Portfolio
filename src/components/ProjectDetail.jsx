@@ -38,7 +38,7 @@ const ProjectDetail = ({ project, onClose }) => {
         </button>
         <div className="w-full h-56 rounded-t-3xl overflow-hidden mb-6 relative">
           <img
-            src={project.image}
+            src={`${import.meta.env.BASE_URL}${project.image}`}
             alt={project.title}
             className="w-full h-full object-cover object-center scale-105 hover:scale-110 transition-transform duration-500"
           />

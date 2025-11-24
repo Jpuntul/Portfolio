@@ -30,7 +30,7 @@ const Projects = () => {
                 >
                   <div className="relative group">
                     <img
-                      src={project.image}
+                      src={`${import.meta.env.BASE_URL}${project.image}`}
                       alt={project.title}
                       className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                     />
