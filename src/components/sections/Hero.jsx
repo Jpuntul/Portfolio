@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { personalInfo } from "../../data/portfolio";
 
@@ -63,12 +64,12 @@ const Hero = () => {
             >
               <FaDownload /> Download Resume
             </a>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="bg-green-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-600 transition-all duration-300 flex items-center gap-2 shadow-lg"
             >
               <span>Send Message</span>
-            </a>
+            </Link>
           </div>
 
           <div className="flex gap-6 justify-center">
