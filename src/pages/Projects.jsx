@@ -1,0 +1,327 @@
+// src/pages/Projects.jsx
+import { useState, useEffect } from "react";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaFilter,
+  FaSearch,
+} from "react-icons/fa";
+import CustomDropdown from "../components/CustomDropdown";
+import { projects } from "../data/portfolio";
+import ProjectDetail from "../components/ProjectDetail";
+
+const Projects = () => {
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeStatus, setActiveStatus] = useState("all");
+  const [activeRole, setActiveRole] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // Dynamically extract all unique categories from project data
+  const categories = [
+    "all",
+    ...Array.from(
+      new Set(
+        projects
+          .flatMap((p) => p.category.split(","))
+          .map((cat) => cat.trim().toLowerCase()),
+      ),
+    ).sort((a, b) => a.localeCompare(b)),
+  ];
+
+  // Dynamically extract all unique roles from project data
+  const roles = [
+    "all",
+    ...Array.from(new Set(projects.map((p) => (p.role || "").trim()))).filter(
+      Boolean,
+    ),
+  ];
+
+  const statusOptions = ["all", "Completed", "Ongoing"];
+
+  // Filter and search functionality
+  useEffect(() => {
+    let filtered = projects;
+
+    // Filter by category (support multiple categories per project)
+    if (activeFilter !== "all") {
+      filtered = filtered.filter((project) =>
+        project.category
+          .split(",")
+          .map((cat) => cat.trim().toLowerCase())
+          .includes(activeFilter.toLowerCase()),
+      );
+    }
+
+    // Filter by status
+    if (activeStatus !== "all") {
+      filtered = filtered.filter(
+        (project) =>
+          (project.status || "").toLowerCase() === activeStatus.toLowerCase(),
+      );
+    }
+
+    // Filter by role
+    if (activeRole !== "all") {
+      filtered = filtered.filter(
+        (project) =>
+          (project.role || "").toLowerCase() === activeRole.toLowerCase(),
+      );
+    }
+
+    // Filter by search term
+    if (searchTerm) {
+      filtered = filtered.filter(
+        (project) =>
+          project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          project.shortDesc.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          project.technologies.some((tech) =>
+            tech.toLowerCase().includes(searchTerm.toLowerCase()),
+          ),
+      );
+    }
+
+    setFilteredProjects(filtered);
+  }, [activeFilter, activeStatus, activeRole, searchTerm]);
+
+  const handleFilterChange = (filter) => {
+    setActiveFilter(filter);
+  };
+
+  const handleStatusChange = (status) => {
+    setActiveStatus(status);
+  };
+
+  return (
+    <>
+      <ProjectDetail
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+      <div>
+        {/* Hero Section */}
+        <section className="pt-40 pb-20 hero-gradient">
+          <div className="container mx-auto px-6 text-center fade-in">
+            <h1 className="text-5xl font-bold text-white mb-6">My Projects</h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              A comprehensive showcase of my software development projects,
+              demonstrating my skills across different technologies and domains.
+            </p>
+          </div>
+        </section>
+
+        {/* Filter Bar */}
+        <section className="bg-gray-50 pt-8 pb-0">
+          <div className="container mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6 fade-in">
+            {/* Role Filter Dropdown */}
+            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+              <CustomDropdown
+                options={roles}
+                value={activeRole}
+                onChange={setActiveRole}
+                label="Role"
+                color="purple"
+              />
+            </div>
+            {/* Category Filter Dropdown */}
+            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+              <CustomDropdown
+                options={categories}
+                value={activeFilter}
+                onChange={handleFilterChange}
+                label="Category"
+                color="green"
+              />
+            </div>
+            {/* Status Filter Dropdown */}
+            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+              <CustomDropdown
+                options={statusOptions}
+                value={activeStatus}
+                onChange={handleStatusChange}
+                label="Status"
+                color="blue"
+              />
+            </div>
+            {/* Search Bar */}
+            <div className="flex items-center gap-2 self-end md:self-end">
+              <FaSearch className="text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="px-4 py-2 rounded-full border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none bg-white text-gray-700 w-64 shadow-sm"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Grid */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-6">
+            {filteredProjects.length === 0 ? (
+              <div className="text-center py-20">
+                <h3 className="text-2xl font-semibold text-gray-600 mb-4">
+                  No projects found
+                </h3>
+                <p className="text-gray-500">
+                  Try adjusting your search or filter criteria.
+                </p>
+                <button
+                  onClick={() => {
+                    setActiveFilter("all");
+                    setSearchTerm("");
+                  }}
+                  className="mt-4 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProjects.map((project, index) => (
+                  <div
+                    key={project.id}
+                    className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 stagger-in flex flex-col h-full cursor-pointer"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    {/* Project Image */}
+                    <div className="relative group">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute top-4 right-4 flex flex-col items-end gap-1">
+                        {/* Role badge */}
+                        {project.role && (
+                          <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase mb-1 tracking-wide">
+                            {project.role}
+                          </span>
+                        )}
+                        {/* Only show the first category badge */}
+                        <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium capitalize">
+                          {project.category.split(",")[0].trim()}
+                        </span>
+                      </div>
+                      {project.featured && (
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Featured
+                          </span>
+                        </div>
+                      )}
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="text-white text-center">
+                          <p className="text-lg font-semibold mb-2">
+                            View Project
+                          </p>
+                          <div className="flex gap-4 justify-center">
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition-colors"
+                            >
+                              <FaGithub />
+                            </a>
+                            {project.demo && (
+                              <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition-colors"
+                              >
+                                <FaExternalLinkAlt />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Project Content */}
+                    <div className="flex flex-col flex-grow">
+                      <div className="p-6 flex-1 flex flex-col">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-xl font-semibold text-gray-800">
+                            {project.title}
+                          </h3>
+                          <span className="text-sm text-gray-500">
+                            {project.year}
+                          </span>
+                        </div>
+                        <p className="text-left text-gray-600 mb-4 line-clamp-3">
+                          {project.shortDesc}
+                        </p>
+                        {/* Technologies */}
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies.slice(0, 4).map((tech) => (
+                            <span
+                              key={tech}
+                              className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          {project.technologies.length > 4 && (
+                            <span className="text-gray-500 text-sm self-center">
+                              +{project.technologies.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      {/* Project Links - always at the bottom */}
+                      <div className="px-6 pb-6 mt-auto">
+                        <div className="flex items-center justify-between">
+                          <div className="flex gap-4">
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors font-medium"
+                            >
+                              <FaGithub /> Code
+                            </a>
+                            {project.demo && (
+                              <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                              >
+                                <FaExternalLinkAlt /> Demo
+                              </a>
+                            )}
+                          </div>
+                          {project.status && (
+                            <span
+                              className={`text-sm px-2 py-1 rounded-full ${
+                                project.status === "Completed"
+                                  ? "bg-green-100 text-green-700"
+                                  : "bg-yellow-100 text-yellow-700"
+                              }`}
+                            >
+                              {project.status === "Completed"
+                                ? "Completed"
+                                : "Ongoing"}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
+
+export default Projects;
