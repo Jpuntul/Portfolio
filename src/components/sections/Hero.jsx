@@ -66,7 +66,7 @@ const Hero = () => {
             </a>
             <Link
               to="/contact"
-              className="bg-green-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-600 transition-all duration-300 flex items-center gap-2 shadow-lg"
+              className="inline-flex bg-green-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-600 transition-all duration-300 items-center gap-2 shadow-lg"
             >
               <span>Send Message</span>
             </Link>
