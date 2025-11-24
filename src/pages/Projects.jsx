@@ -126,9 +126,6 @@ const Projects = () => {
             </div>
             {/* Category Filter Dropdown */}
             <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-              <div className="flex items-center mb-1 md:mb-0">
-                <FaFilter className="text-gray-500 mr-2" />
-              </div>
               <CustomDropdown
                 options={categories}
                 value={activeFilter}

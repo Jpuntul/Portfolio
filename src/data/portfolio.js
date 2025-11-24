@@ -33,7 +33,7 @@ export const projects = [
     github: "https://github.com/Jpuntul/HMS",
     demo: "",
     category: "Web",
-    status: "Completed",
+    status: "Ongoing",
     features: [
       "Patient Management",
       "Doctor Scheduling",
@@ -103,7 +103,7 @@ export const projects = [
   },
   {
     id: 6,
-    role: "Frontend",
+    role: "Full Stack",
     title: "Calculator",
     shortDesc: "Simple calculator web application.",
     description: "A simple calculator application.",
@@ -141,19 +141,19 @@ export const projects = [
     github: "https://github.com/Jpuntul/hand-in-hand-auction",
     demo: "",
     category: "Web",
-    status: "Completed",
+    status: "Ongoing",
     features: ["Auction Bidding", "User Accounts", "Item Listings"],
     highlight: true,
   },
   {
     id: 9,
-    role: "Frontend",
+    role: "Full Stack",
     title: "Adopt Cat Dog",
     shortDesc:
       "Pet adoption platform connecting adopters with cats and dogs in need.",
     description: `Adopt Cat Dog is a web application designed to streamline the adoption process for both potential adopters and rescue organizations. Users can browse available cats and dogs, submit adoption applications, and connect with rescue centers, making it easier for pets to find loving homes.`,
     image: "/images/projects/adopt-cat-dog.png",
-    technologies: ["React", "Tailwind CSS"],
+    technologies: ["React", "Tailwind CSS", "Node.js"],
     github: "https://github.com/Jpuntul/Adopt_cat-dog",
     demo: "",
     category: "Web",
@@ -162,7 +162,7 @@ export const projects = [
   },
   {
     id: 10,
-    role: "Full Stack",
+    role: "Frontend",
     title: "Personal Portfolio",
     shortDesc:
       "Modern, responsive portfolio website to showcase my projects and skills.",

@@ -30,7 +30,7 @@ const ProjectDetail = ({ project, onClose }) => {
         className="bg-white max-w-2xl w-full rounded-3xl shadow-2xl border border-gray-200 p-0 sm:p-8 relative overflow-y-auto max-h-[90vh] text-left transition-all duration-300"
       >
         <button
-          className="absolute top-4 right-4 bg-gray-100 hover:bg-red-100 text-gray-500 hover:text-red-500 rounded-full w-10 h-10 flex items-center justify-center shadow transition-all duration-200 border border-gray-200"
+          className="absolute top-4 right-4 z-20 bg-gray-100 hover:bg-red-100 text-gray-500 hover:text-red-500 rounded-full w-10 h-10 flex items-center justify-center shadow transition-all duration-200 border border-gray-200"
           onClick={onClose}
           aria-label="Close"
         >
