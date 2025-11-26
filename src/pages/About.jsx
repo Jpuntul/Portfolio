@@ -1,6 +1,17 @@
 // src/pages/About.jsx
-import { FaGraduationCap, FaCode, FaLaptopCode, FaLightbulb, FaRocket, FaDownload, FaMapMarkerAlt, FaCalendarAlt, FaBook, FaUsers } from 'react-icons/fa'
-import { personalInfo } from '../data/portfolio'
+import {
+  FaGraduationCap,
+  FaCode,
+  FaLaptopCode,
+  FaLightbulb,
+  FaRocket,
+  FaDownload,
+  FaMapMarkerAlt,
+  FaCalendarAlt,
+  FaBook,
+  FaUsers,
+} from "react-icons/fa";
+import { personalInfo } from "../data/portfolio";
 
 const About = () => {
   const background = [
@@ -8,10 +19,11 @@ const About = () => {
       icon: FaGraduationCap,
       title: "Education",
       items: [
-        "Software Engineering at Concordia University",
+        `Software Engineering at ${personalInfo.university}`,
+        `Graduating ${personalInfo.graduationDate}`,
         "Focus on full-stack development and algorithms",
-        "Strong academic performance in core courses"
-      ]
+        "Strong academic performance in core courses",
+      ],
     },
     {
       icon: FaCode,
@@ -19,8 +31,8 @@ const About = () => {
       items: [
         "3 years of hands-on programming experience",
         "Built multiple full-stack applications",
-        "Continuously expanding skillset through practice"
-      ]
+        "Continuously expanding skillset through practice",
+      ],
     },
     {
       icon: FaBook,
@@ -28,18 +40,18 @@ const About = () => {
       items: [
         "Hands-on project-based learning",
         "Building real applications to understand concepts",
-        "Combining theory with practical implementation"
-      ]
-    }
-  ]
+        "Combining theory with practical implementation",
+      ],
+    },
+  ];
 
   const currentFocus = [
     "Advanced React patterns and state management",
-    "Machine Learning with Python and TensorFlow", 
+    "Machine Learning with Python and TensorFlow",
     "AWS Cloud Services and serverless architecture",
     "Database design and optimization",
-    "DevOps practices and CI/CD pipelines"
-  ]
+    "DevOps practices and CI/CD pipelines",
+  ];
 
   return (
     <>
@@ -51,8 +63,8 @@ const About = () => {
               More About Me
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Deep dive into my educational background, learning approach, 
-              and what I'm currently focused on in my software engineering journey.
+              Deep dive into my educational background, learning approach, and
+              what I'm currently focused on in my software engineering journey.
             </p>
           </div>
         </section>
@@ -65,13 +77,14 @@ const About = () => {
                 My Background & Approach
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                How I've built my foundation in software engineering over the past {personalInfo.yearsOfExperience} years.
+                How I've built my foundation in software engineering through
+                hands-on projects and continuous learning.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
               {background.map((section, index) => (
-                <div 
+                <div
                   key={index}
                   className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-2xl hover:shadow-lg transition-all duration-300"
                 >
@@ -83,8 +96,13 @@ const About = () => {
                   </h3>
                   <ul className="space-y-2">
                     {section.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="text-gray-600 text-sm flex items-start gap-2 text-left">
-                        <span className="text-green-500 mt-1 flex-shrink-0">•</span>
+                      <li
+                        key={itemIndex}
+                        className="text-gray-600 text-sm flex items-start gap-2 text-left"
+                      >
+                        <span className="text-green-500 mt-1 flex-shrink-0">
+                          •
+                        </span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -103,14 +121,15 @@ const About = () => {
                 What I'm Learning Right Now
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Current technologies and concepts I'm actively studying and implementing in projects.
+                Current technologies and concepts I'm actively studying and
+                implementing in projects.
               </p>
             </div>
 
             <div className="max-w-3xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {currentFocus.map((focus, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-3"
                   >
@@ -124,7 +143,7 @@ const About = () => {
         </section>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default About
+export default About;

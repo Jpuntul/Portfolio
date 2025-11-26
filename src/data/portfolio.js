@@ -1,39 +1,39 @@
 export const personalInfo = {
   name: "Jutipong Puntuleng",
   title: "Software Engineering Student",
+  citizenship: "Thai/Canadian",
   university: "Concordia University",
-  location: "Montreal, QC",
+  location: "Montreal, QC • Open to relocate to Bangkok",
   email: "p.jutipong13@gmail.com",
-  phone: "(514) 585-5823",
+  phone: "+1 (514) 585-5823",
   github: "https://github.com/Jpuntul",
   linkedin: "https://www.linkedin.com/in/jpuntul/",
-  yearsOfExperience: 3,
+  graduationDate: "April 2026",
 };
 
 export const projects = [
   {
     id: 1,
     role: "Full Stack",
-    title: "HMS",
+    title: "Healthcare Management System",
     shortDesc:
-      "Comprehensive health facility employee status tracking system for pandemic management.",
-    description: `HFESTS (Hospital Facility Employee Status Tracking System) is a comprehensive system designed to track the status of employees in health facilities, especially during pandemic situations like COVID-19. It maintains detailed information about employees, people they live or work with, facilities, residences, infections, and vaccinations. The system supports:
+      "Full-stack healthcare platform managing 447 patient records and 303 staff accounts with optimized performance.",
+    description: `Built a comprehensive full-stack healthcare platform designed to manage patient records, staff accounts, and healthcare operations efficiently.
 
-      - Managing facilities (hospitals, clinics, pharmacies, etc.) and their employees
-      - Tracking employee roles, schedules, and assignments across multiple facilities
-      - Recording infection and vaccination history for employees and their contacts
-      - Managing residences and relationships of people living with employees
-      - Enforcing scheduling rules based on infection/vaccination status
-      - Automated email notifications for schedule updates, infection warnings, and assignment changes
-      - Logging all system-generated emails for auditing
+      Key Achievements:
+      - Manages 447 patient records and 303 staff accounts
+      - Optimized database queries by 75% (from 3s → 0.7s) through indexing, caching, and improved schema design
+      - Implemented JWT authentication with role-based access control for admin, doctor, and staff workflows
+      - Designed REST API with 15+ endpoints powering analytics dashboards
+      - Added automated code quality checks using 13 pre-commit hooks
 
-      The system features a user-friendly GUI and is practical for health organizations to reduce the risk of disease spread and ensure compliance with health protocols.`,
+      The platform provides a user-friendly interface for healthcare professionals to efficiently manage patient data, schedules, and administrative tasks while ensuring data security and compliance with healthcare protocols.`,
     image: "images/projects/hms.png",
-    technologies: ["Vite", "MySQL", "Django"],
+    technologies: ["Django", "React", "TypeScript", "MySQL"],
     github: "https://github.com/Jpuntul/HMS",
     demo: "",
     category: "Web",
-    status: "Ongoing",
+    status: "Completed",
     features: [
       "Patient Management",
       "Doctor Scheduling",
@@ -57,7 +57,7 @@ export const projects = [
   },
   {
     id: 3,
-    role: "Full Stack",
+    role: "Frontend",
     title: "Campus Navigation",
     shortDesc: "Interactive campus map for navigation and location search.",
     description: `The Concordia Campus Guide is a mobile application designed to provide comprehensive indoor and outdoor navigation, schedule management, and accessibility features for Concordia University. The app helps students, staff, and visitors efficiently find their way across both Sir George Williams and Loyola campuses, including buildings, rooms, and facilities.\n\nKey Features:\n- Indoor navigation from room to room or floor to floor, with accessibility details (elevators, stairs, etc.)\n- Outdoor navigation between buildings and off-campus locations\n- Inter-campus travel guidance, including transport schedules and waiting times\n- Integration with user calendars to find and navigate to upcoming events or classes\n- Search for buildings, rooms, and schedules through a user-friendly interface\n- Clear map views for both indoor and outdoor navigation\n- Accessibility-focused route planning for users with mobility needs\n\nThe project aims to deliver a seamless, accessible, and efficient campus navigation and planning experience for the Concordia community.`,
@@ -77,7 +77,7 @@ export const projects = [
     shortDesc:
       "Open-source network simulation platform for managing distributed resources (used by Bixi).",
     description: `VeloSim is an open-source network simulation platform that enables job dispatchers to manage distributed resources in dynamic environments. It features a Python backend and simulation engine, and a modern JavaScript/React frontend. VeloSim is used by Bixi for real-world resource management and simulation.\n\nKey Features:\n- Distributed resource/job management\n- Python backend API and simulation engine\n- Modern JavaScript/React frontend\n- Used in production by Bixi\n- Team-based collaborative development\n\nThe project is structured for robust development, testing, and CI/CD, with strict code quality standards and automated workflows.`,
-    image: "images/projects/velosim.png",
+    image: "images/projects/velosim.svg",
     technologies: ["Vite", "Django", "MapboxGL", "Codecov"],
     github: "https://github.com/vinishamanek/VeloSim",
     demo: "",
@@ -121,7 +121,7 @@ export const projects = [
     title: "Date Countdown",
     shortDesc: "Countdown timer for important dates (ongoing).",
     description: "A countdown timer for important dates (ongoing).",
-    image: "images/projects/date-countdown.png",
+    image: "images/projects/date-countdown.svg",
     technologies: ["React Native"],
     github: "https://github.com/Jpuntul/countdown",
     demo: "",
@@ -133,15 +133,25 @@ export const projects = [
   {
     id: 8,
     role: "Full Stack",
-    title: "Hand-in-Hand",
-    shortDesc: "Auction web app for bidding and selling items.",
-    description: "Auction web application for bidding and selling items.",
-    image: "images/projects/hand-in-hand.png",
-    technologies: ["Vite", "Node.js", "Firebase"],
+    title: "Real-Time Auction Platform",
+    shortDesc:
+      "Real-time bidding platform for Hand in Hand Myanmar charity event with live updates.",
+    description: `Built a real-time bidding platform for the Hand in Hand Myanmar charity event, enabling live auctions with instant synchronization across all users.
+
+        Key Features:
+        - Implemented live Firestore synchronization for instant bid updates across all connected users
+        - Designed admin dashboard with full CRUD operations for managing auction items
+        - Built multi-image upload gallery for showcasing auction items
+        - Added lightweight guest authentication using localStorage for improved user experience
+        - Real-time bidding with automatic highest bid tracking and notifications
+
+        The platform successfully facilitated charity auctions, providing a seamless experience for both organizers and participants.`,
+    image: "images/projects/hand-in-hand.svg",
+    technologies: ["React", "Firebase", "JavaScript", "Firestore"],
     github: "https://github.com/Jpuntul/hand-in-hand-auction",
     demo: "",
     category: "Web",
-    status: "Ongoing",
+    status: "Completed",
     features: ["Auction Bidding", "User Accounts", "Item Listings"],
     highlight: true,
   },
@@ -204,20 +214,23 @@ export const projects = [
 export const skills = {
   "Programming Languages": [
     { name: "JavaScript", experience: "Proficient" },
-    { name: "Python", experience: "Experienced" },
+    { name: "Python", experience: "Proficient" },
     { name: "Java", experience: "Experienced" },
     { name: "TypeScript", experience: "Experienced" },
+    { name: "C", experience: "Familiar" },
   ],
   Frontend: [
     { name: "React", experience: "Proficient" },
     { name: "HTML/CSS", experience: "Proficient" },
-    { name: "Tailwind CSS", experience: "Experienced" },
-    { name: "Vue.js", experience: "Familiar" },
+    { name: "Tailwind CSS", experience: "Proficient" },
+    { name: "Vue.js", experience: "Experienced" },
+    { name: "Flutter", experience: "Experienced" },
   ],
   Backend: [
     { name: "Node.js", experience: "Proficient" },
-    { name: "SQL", experience: "Experienced" },
+    { name: "SQL", experience: "Proficient" },
     { name: "Django", experience: "Experienced" },
     { name: "MongoDB", experience: "Experienced" },
+    { name: "Firebase", experience: "Experienced" },
   ],
 };
