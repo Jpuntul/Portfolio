@@ -66,6 +66,8 @@ const Hero = () => {
             </a>
             <a
               href={`${import.meta.env.BASE_URL}resume.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-700 transition-all duration-300 flex items-center gap-2"
             >
               <FaDownload /> Download Resume
@@ -81,12 +83,16 @@ const Hero = () => {
           <div className="flex gap-6 justify-center">
             <a
               href={personalInfo.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-2xl hover:text-blue-300 transition-colors transform hover:scale-110 duration-300"
             >
               <FaGithub />
             </a>
             <a
               href={personalInfo.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-2xl hover:text-blue-300 transition-colors transform hover:scale-110 duration-300"
             >
               <FaLinkedin />
