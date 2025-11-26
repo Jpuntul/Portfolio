@@ -45,6 +45,12 @@ const Hero = () => {
             {text}
             <span className="animate-pulse">|</span>
           </h2>
+          <div className="text-lg mb-6 text-white/80">
+            <span>
+              {personalInfo.citizenship} • Graduating{" "}
+              {personalInfo.graduationDate}
+            </span>
+          </div>
           <p className="text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
             Passionate about creating innovative solutions through clean code
             and modern technologies. Currently pursuing Software Engineering at{" "}
