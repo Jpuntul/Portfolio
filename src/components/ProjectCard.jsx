@@ -1,4 +1,9 @@
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import {
+  CARD_DIMENSIONS,
+  ANIMATION_DELAY,
+  TECH_DISPLAY_LIMIT,
+} from "../constants/ui";
 
 const ProjectCard = ({
   project,
@@ -11,10 +16,13 @@ const ProjectCard = ({
 
   const variantClasses = {
     grid: "stagger-in h-full cursor-pointer",
-    featured: "min-w-[380px] max-w-md h-[430px] flex-shrink-0",
+    featured: `min-w-[${CARD_DIMENSIONS.FEATURED_MIN_WIDTH}] max-w-${CARD_DIMENSIONS.FEATURED_MAX_WIDTH} h-[${CARD_DIMENSIONS.FEATURED_HEIGHT}] flex-shrink-0`,
   };
 
-  const animationDelay = variant === "featured" ? index * 0.2 : index * 0.1;
+  const animationDelay =
+    variant === "featured"
+      ? index * ANIMATION_DELAY.FEATURED_CARD
+      : index * ANIMATION_DELAY.GRID_CARD;
 
   // Render project links based on privacy and variant
   const renderLinks = (linkVariant = "default") => {
@@ -160,7 +168,12 @@ const ProjectCard = ({
           {/* Technologies */}
           <div className="flex flex-wrap gap-2 mb-4">
             {project.technologies
-              .slice(0, variant === "featured" ? 3 : 4)
+              .slice(
+                0,
+                variant === "featured"
+                  ? TECH_DISPLAY_LIMIT.FEATURED
+                  : TECH_DISPLAY_LIMIT.GRID,
+              )
               .map((tech) => (
                 <span
                   key={tech}
@@ -169,11 +182,12 @@ const ProjectCard = ({
                   {tech}
                 </span>
               ))}
-            {variant === "grid" && project.technologies.length > 4 && (
-              <span className="text-gray-500 text-sm self-center">
-                +{project.technologies.length - 4} more
-              </span>
-            )}
+            {variant === "grid" &&
+              project.technologies.length > TECH_DISPLAY_LIMIT.GRID && (
+                <span className="text-gray-500 text-sm self-center">
+                  +{project.technologies.length - TECH_DISPLAY_LIMIT.GRID} more
+                </span>
+              )}
           </div>
         </div>
 

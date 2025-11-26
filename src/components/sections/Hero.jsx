@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { personalInfo } from "../../data/portfolio";
+import { TYPEWRITER_SPEED } from "../../constants/ui";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -16,7 +17,7 @@ const Hero = () => {
       if (index > fullText.length) {
         clearInterval(timer);
       }
-    }, 100);
+    }, TYPEWRITER_SPEED);
 
     return () => clearInterval(timer);
   }, [fullText]);

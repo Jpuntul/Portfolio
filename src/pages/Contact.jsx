@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { personalInfo } from "../data/portfolio";
+import { FORM_TIMEOUT } from "../constants/ui";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -57,11 +58,14 @@ const Contact = () => {
 
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error("EmailJS Error:", error);
+      // Log error in development only - consider using error reporting service in production
+      if (import.meta.env.DEV) {
+        console.error("EmailJS Error:", error);
+      }
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus(""), 5000); // Clear status after 5 seconds
+      setTimeout(() => setSubmitStatus(""), FORM_TIMEOUT);
     }
   };
 
