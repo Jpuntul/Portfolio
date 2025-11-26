@@ -15,9 +15,9 @@ export const projects = [
   {
     id: 1,
     role: "Full Stack",
-    title: "Healthcare Management System",
+    title: "HMS",
     shortDesc:
-      "Full-stack healthcare platform managing 447 patient records and 303 staff accounts with optimized performance.",
+      "Healthcare platform managing 447 patient records and 303 staff .",
     description: `Built a comprehensive full-stack healthcare platform designed to manage patient records, staff accounts, and healthcare operations efficiently.
 
       Key Achievements:
