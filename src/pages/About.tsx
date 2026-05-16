@@ -11,22 +11,28 @@ const timeline = [
     body: "Coursework in data structures, databases, OS, cloud computing, distributed systems. Capstone: SOEN-390 campus navigation Flutter app.",
   },
   {
-    period: "2025 – present",
-    title: "VeloSim · Open-source contributor",
-    place: "BIXI Montréal + Concordia",
-    body: "11-person Agile team. WebSocket-driven live updates, schema migrations, unit tests, code reviews on every PR. Python + React + PostgreSQL.",
+    period: "Sep 2025 - Apr 2026",
+    title: "VeloSim · Frontend engineer",
+    place: "BIXI Montréal + Concordia (11-person team)",
+    body: 'Shipped an open-source bike-network simulator now live at velosim.app. Implemented the WebSocket frontend integration for live simulation updates, built the "All Routes Toggle" map control, wrote Vitest unit tests, and collaborated on architecture, schema migrations, and visualizations. FastAPI + React/TS + PostgreSQL + Mapbox + GraphHopper.',
   },
   {
-    period: "2024",
+    period: "May 2025 - Present",
     title: "Hand-in-Hand Auction · Sole developer",
     place: "Charity event, end-to-end ship",
     body: "Built and shipped a real-time bidding platform on React + Firebase Firestore for an in-person charity event. Admin CRUD, image gallery, live bid sync.",
   },
   {
-    period: "2024",
+    period: "June 2025 - Present",
     title: "Healthcare Management System · Full-stack",
     place: "Coursework + capstone-level project",
-    body: "Django REST + React/TypeScript + MySQL. 447 patients, 303 staff, 11+ facilities, 30+ endpoints, 75% query speedup via indexing/caching/schema redesign.",
+    body: "Django REST + React/TypeScript + MySQL. 447 patients, 303 staff, 11+ facilities, 15+ endpoints, 75% query speedup via indexing/caching/schema redesign.",
+  },
+  {
+    period: "Jan 2025 - Apr 2025",
+    title: "Campus Navigation App · Flutter",
+    place: "Concordia University",
+    body: "Developed a cross-platform mobile application achieving 95% location tracking accuracy. Integrated Google Maps API and optimized pathfinding paths, reducing user travel time by 30%. Implemented real-time geolocation tracking, localized building data, and interactive UI components. Established a robust CI/CD pipeline using GitHub Actions to automate linting and build testing.",
   },
 ];
 
@@ -42,7 +48,7 @@ export default function About() {
   usePageMeta({
     title: "About · Jutipong Puntuleng",
     description:
-      "How I got here, what I'm working on next. Concordia '26, available from July 2026.",
+      "How I got here, what I'm working on next. Concordia '26, available from August 2026.",
   });
   return (
     <main id="main">
@@ -65,7 +71,7 @@ export default function About() {
           <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
             I just graduated from {personalInfo.university}&rsquo;s Software
             Engineering program ({personalInfo.graduated}) and I&rsquo;m
-            available for full-time roles from July {personalInfo.graduated}.
+            available for full-time roles from August {personalInfo.graduated}.
             Below: how I work, what I&rsquo;ve shipped, and what I&rsquo;m
             focused on right now.
           </p>

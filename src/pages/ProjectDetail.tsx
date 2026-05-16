@@ -68,8 +68,8 @@ export default function ProjectDetail() {
           <div className="mt-6 flex flex-wrap gap-3">
             {project.private ? (
               <span className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
-                <Lock className="h-4 w-4" /> Private repository — contact for
-                access
+                <Lock className="h-4 w-4" />
+                {project.privateNote ?? "Private repository"}
               </span>
             ) : (
               <>

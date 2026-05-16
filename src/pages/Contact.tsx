@@ -26,7 +26,7 @@ export default function Contact() {
   usePageMeta({
     title: "Contact · Jutipong Puntuleng",
     description:
-      "Get in touch. Available for full-time software engineering roles from July 2026.",
+      "Get in touch. Available for full-time software engineering roles from August 2026.",
   });
   const [form, setForm] = useState<FormState>(initialForm);
   const [status, setStatus] = useState<Status>("");

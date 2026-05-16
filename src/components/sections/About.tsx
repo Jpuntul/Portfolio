@@ -49,25 +49,25 @@ export default function About() {
             Hi, I&rsquo;m Jutipong. I just graduated from{" "}
             {personalInfo.university}&rsquo;s Software Engineering program (
             {personalInfo.graduated}) and I&rsquo;m available for full-time
-            roles from July {personalInfo.graduated}.
+            roles from August {personalInfo.graduated}.
           </p>
           <p className="text-slate-700 dark:text-slate-300">
             I lean backend &mdash; REST API design, schema and query
-            optimization, real-time data &mdash; but I ship the frontend too. My
-            favourite work right now is contributing to{" "}
+            optimization, real-time data &mdash; but I ship the frontend too.
+            Most recently I was on the frontend of{" "}
             <span className="font-medium text-slate-900 dark:text-white">
               VeloSim
             </span>
             , an open-source bike-network simulator built with BIXI
-            Montr&eacute;al that uses WebSocket-driven live updates over a
-            Python + React stack.
+            Montr&eacute;al on a FastAPI + React/TS + PostgreSQL stack with
+            WebSocket live updates &mdash; deployed at velosim.app.
           </p>
           <p className="text-slate-700 dark:text-slate-300">
             Strongest projects:{" "}
             <span className="font-medium text-slate-900 dark:text-white">
               Healthcare Management System
             </span>{" "}
-            (447 patients, 303 staff, 11+ facilities, 30+ endpoints, 75% query
+            (447 patients, 303 staff, 11+ facilities, 15+ endpoints, 75% query
             speedup),{" "}
             <span className="font-medium text-slate-900 dark:text-white">
               Hand-in-Hand Auction
@@ -76,7 +76,7 @@ export default function About() {
             <span className="font-medium text-slate-900 dark:text-white">
               SOEN-390 Campus Navigation
             </span>{" "}
-            Flutter app (95% location accuracy, 30% faster routing).
+            Flutter capstone app.
           </p>
         </motion.div>
       </div>

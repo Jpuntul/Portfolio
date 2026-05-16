@@ -47,6 +47,8 @@ export interface Project {
   architecture?: string[];
   /** What this individual specifically owned on team projects */
   myRole?: string;
+  /** Why source/demo isn't accessible — shown instead of "Private" */
+  privateNote?: string;
 }
 
 export interface Skill {
@@ -61,7 +63,7 @@ export const personalInfo: PersonalInfo = {
   title: "Full-Stack Software Engineer",
   headline:
     "Software Engineer building backend systems, real-time apps, and developer tools.",
-  availability: "Available for full-time roles from July 2026",
+  availability: "Available for full-time roles from August 2026",
   citizenship: "Thai/Canadian",
   university: "Concordia University",
   graduated: "2026",
@@ -84,46 +86,48 @@ export const projects: Project[] = [
     role: "Full Stack",
     title: "Healthcare Management System",
     tagline:
-      "Hospital platform managing 447 patients, 303 staff, and 11+ facilities.",
+      "Hospital platform managing 447+ patients, 303+ staff, and 11+ facilities.",
     shortDesc:
-      "Healthcare platform managing 447 patient records, 303 staff accounts, and 11+ facilities.",
+      "Healthcare platform managing 447+ patient records, 303+ staff accounts, and 11+ facilities.",
     problem:
       "Healthcare admins were juggling patient records, staff scheduling, and facility coordination across disconnected tools, with slow queries and no audit-friendly access control.",
     solution:
       "Built a Django REST + React/TypeScript platform with hybrid public/authenticated access, role-based permissions, and analytics dashboards backed by an indexed MySQL schema.",
     impact: [
-      "Manages 447 patient records, 303 staff accounts, and 11+ medical facilities",
+      "Manages 447+ patient records, 303+ staff accounts, and 11+ medical facilities",
       "Optimized database queries by 75% (3s → 0.7s) via indexing, caching, and schema redesign",
-      "Designed and maintained 30+ REST API endpoints powering analytics and admin workflows",
-      "Enforced quality with 13 pre-commit hooks (ESLint, Prettier, Flake8, isort, Black)",
+      "Designed a robust REST API with 15+ endpoints powering interactive data analytics dashboards",
+      "Enforced quality with 13 pre-commit hooks (flake8, isort, ESLint, TypeScript, Prettier, Black)",
     ],
     architecture: [
-      "Backend: Django 4.2 + Django REST Framework, JWT auth, MySQL",
-      "Frontend: React 19 + TypeScript + Vite + Tailwind CSS",
+      "Backend: Django 4.2.25 + Django REST Framework, token auth, MySQL (prod) / SQLite (dev)",
+      "Frontend: React 19.1.1 + TypeScript + Vite + Tailwind CSS + Axios",
       "Tooling: 13 pre-commit hooks, GitHub Actions CI",
     ],
-    description: `Built a comprehensive full-stack healthcare platform designed to manage patient records, staff accounts, and healthcare operations efficiently.
+    description: `Full-stack healthcare platform built solo to manage patient records, staff scheduling, and facility coordination.
 
       Key Achievements:
-      - Manages 447 patient records, 303 staff accounts, and 11+ medical facilities
-      - Optimized database queries by 75% (from 3s → 0.7s) through indexing, caching, and improved schema design
-      - Designed and maintained 30+ REST API endpoints powering analytics dashboards
-      - Implemented token-based authentication (Django REST Framework) with a hybrid access model: public viewing + authenticated modifications
-      - Added automated code quality checks using 13 pre-commit hooks
+      - Manages 447+ patient records (with Canadian Medicare numbers), 303+ healthcare professionals, and 11+ medical facilities (hospitals, clinics, pharmacies)
+      - Optimized database queries by 75% (3s → 0.7s) through indexing, caching, and improved schema design
+      - Designed a REST API with 15+ endpoints powering interactive analytics dashboards
+      - Implemented hybrid auth: public read-only browsing, token-authenticated CRUD with admin-only registration
+      - Enforced quality with 13 pre-commit hooks (flake8, isort, ESLint, TypeScript, Prettier, Black)
 
-      The platform provides a user-friendly interface for healthcare professionals to efficiently manage patient data, schedules, and administrative tasks while ensuring data security and compliance with healthcare protocols.`,
+      Built for healthcare admins who were juggling patient records, scheduling, and facility coordination across disconnected tools.`,
     image: "images/projects/hms.png",
     technologies: ["Django", "Django REST", "React", "TypeScript", "MySQL"],
     github: "https://github.com/Jpuntul/HMS",
     demo: "",
     category: "Web",
-    status: "Completed",
+    status: "Ongoing",
     features: [
       "Patient Management",
       "Staff Scheduling",
       "Analytics Dashboards",
       "Role-Based Access Control",
     ],
+    myRole:
+      "Sole developer. Built the full Django backend, the React/TypeScript frontend, the hybrid-auth model, the MySQL schema and query optimization work, and the 13-hook pre-commit pipeline.",
     highlight: true,
   },
   {
@@ -164,20 +168,21 @@ Stack:
     tagline:
       "Cross-platform Flutter app for Concordia campus indoor/outdoor navigation.",
     shortDesc:
-      "Cross-platform mobile app for Concordia campus navigation with 95% location accuracy.",
+      "Cross-platform Flutter app for indoor and outdoor navigation across Concordia's two campuses.",
     problem:
       "Concordia students and visitors struggled with finding rooms, navigating between Sir George Williams and Loyola campuses, and accessibility-aware routing.",
     solution:
       "Built a Flutter app with Google Maps integration covering indoor room-to-room routing, outdoor inter-campus navigation, and calendar-driven trip planning.",
     impact: [
-      "Achieved 95% location accuracy across both campuses",
-      "Reduced average navigation time by 30% via optimized path planning",
-      "Set up GitHub Actions CI with automated test runs on every PR",
+      "9-person Agile capstone team (SOEN-390, W2025); released v1.0.0 in April 2025",
+      "Cross-platform iOS + Android build pipeline (Flutter)",
+      "CI gates via GitHub Actions, Codecov coverage tracking, and SonarCloud quality checks",
+      "Pre-commit hooks via `.githooks` for consistent formatting and linting",
     ],
     architecture: [
-      "Mobile: Flutter (Dart) cross-platform",
+      "Mobile: Flutter (Dart) cross-platform — 99.6% Dart",
       "Mapping: Google Maps API + custom indoor floorplan data",
-      "Quality: CI via GitHub Actions, Codecov coverage tracking",
+      "Quality: GitHub Actions CI, Codecov coverage, SonarCloud quality gates",
     ],
     description: `Concordia Campus Guide is a cross-platform Flutter mobile app providing indoor and outdoor navigation, schedule management, and accessibility features across Sir George Williams and Loyola campuses.
 
@@ -206,65 +211,79 @@ Key Features:
       "Accessibility Routing",
     ],
     myRole:
-      "Mini-capstone team project (SOEN-390). Contributed to navigation logic, UI components, and CI pipeline.",
+      "Mini-capstone team project (SOEN-390, 9-person team). Contributed to navigation logic, UI components, and the CI pipeline.",
     highlight: true,
   },
   {
     id: 4,
     slug: "velosim",
-    role: "Full Stack",
+    role: "Frontend",
     title: "VeloSim — Bike Network Simulator",
     tagline:
-      "Open-source bike network simulator built with BIXI Montréal (ongoing).",
+      "Open-source bike-share simulation platform used by BIXI Montréal.",
     shortDesc:
-      "Open-source bike network simulation platform built with BIXI Montréal for managing distributed resources in dynamic environments.",
+      "Open-source network simulation platform that lets dispatchers manage distributed bike-share resources under dynamic conditions. Deployed at velosim.app.",
     problem:
       "Dispatchers at large bike-share networks need a way to simulate fleet behavior under variable demand, route disruptions, and rebalancing strategies before deploying changes to the live network.",
     solution:
-      "Contributing to a Python + React simulation platform with real-time WebSocket data streaming, schema-driven simulation state, and live visualization on MapboxGL.",
+      "Shipped a FastAPI + React/TypeScript simulation platform with real-time WebSocket streaming, GraphHopper-powered traffic-aware routing, and live visualization on Mapbox — built over 11 people in a multi-release cycle with BIXI Montréal.",
     impact: [
-      "Open-source contribution alongside BIXI Montréal",
-      "11-person Agile team running weekly sprints",
-      "WebSocket-driven live updates for simulation state and visualization",
-      "Schema migrations and unit tests reviewed via PR-based workflow",
+      "11-person team across Frontend, Backend, and Simulation, partnering with BIXI Montréal",
+      "Multi-release deployment cycle (Release 1, 2, 3) — live at velosim.app with demo videos and TA credentials",
+      "WebSocket-driven live simulation updates and real-time data streaming",
+      'Built the "All Routes Toggle" map control and other frontend features; wrote Vitest unit tests; collaborated on architecture decisions during weekly Agile sprints',
     ],
     architecture: [
-      "Backend: Python simulation engine, PostgreSQL, WebSockets",
-      "Frontend: Vite + React + MapboxGL for live visualization",
-      "Tooling: Codecov, GitHub Actions, code review on every PR",
+      "Backend: FastAPI + SQLAlchemy + PostgreSQL, Alembic migrations, JWT auth",
+      "Routing: GraphHopper for traffic-aware route calculation",
+      "Frontend: Vite + React + TypeScript + Mapbox GL for live map visualization",
+      "Realtime: WebSocket streaming between sim engine and frontend",
+      "Observability: Grafana + Loki + Promtail centralized logging",
+      "Testing: pytest + Vitest + @testing-library/react + Playwright e2e",
+      "CI/CD: GitHub Actions, Codecov, Docker Compose, pre-commit hooks (black, flake8, mypy, ESLint, Prettier)",
     ],
     description: `VeloSim is an open-source bike-network simulation platform developed in partnership with BIXI Montréal. The system lets dispatchers model distributed bike-share resources under dynamic conditions — demand spikes, route disruptions, and rebalancing strategies — before applying changes to the live fleet.
 
-Key Features:
-- Distributed resource and job dispatch simulation
-- WebSocket-driven real-time updates and data streaming
-- Python simulation engine with schema-driven state
-- React + MapboxGL frontend for live visualization
-- 11-person Agile team with code review and CI/CD
+Architecture:
+- FastAPI backend with SQLAlchemy ORM and PostgreSQL, Alembic-managed migrations
+- Python simulation engine separated into a dedicated module
+- GraphHopper for traffic-aware routing with per-request custom-model speed adjustments
+- React + TypeScript + Vite frontend rendering live state on Mapbox GL
+- WebSocket connection from sim → frontend for live updates
+- Grafana + Loki + Promtail logging stack
+- Vitest + RTL on the frontend, pytest on the backend, Playwright for e2e
+- GitHub Actions CI, Codecov, Docker Compose for local services, pre-commit hooks
 
-This is a private team repository.`,
-    image: "images/projects/velosim.svg",
+Private team repository`,
+    image: "images/projects/velosim.png",
     technologies: [
       "Python",
-      "React",
-      "Vite",
+      "FastAPI",
       "PostgreSQL",
+      "SQLAlchemy",
       "WebSockets",
-      "MapboxGL",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Mapbox GL",
+      "GraphHopper",
     ],
     github: "",
     demo: "",
     private: true,
+    privateNote:
+      "Institutional deployment — contains live BIXI operational data. Source and demo are not publicly accessible.",
     category: "Web",
-    status: "Ongoing",
+    status: "Completed",
     features: [
       "Real-Time Simulation",
       "WebSocket Streaming",
-      "Map Visualization",
-      "Schema Migrations",
+      "Mapbox Visualization",
+      "GraphHopper Routing",
+      "Grafana Observability",
     ],
     myRole:
-      "Working on WebSocket live-update flow, unit tests, schema migrations, and data visualization in weekly Agile sprints.",
+      'Frontend engineer on an 11-person team. Implemented WebSocket frontend integration for live simulation updates, built the "All Routes Toggle" map control, wrote Vitest unit tests, and collaborated on architecture decisions, schema migrations, and data visualizations during weekly Agile sprints.',
     highlight: true,
   },
   {
@@ -336,16 +355,17 @@ Key Features:
     title: "Hand-in-Hand Auction",
     tagline: "Real-time charity auction platform with live Firestore bidding.",
     shortDesc:
-      "Real-time bidding platform for the Hand-in-Hand Myanmar charity event.",
+      "Real-time bidding platform for the Hand-in-Hand Myanmar charity. V1 shipped for the live event; now building a polished long-term version.",
     problem:
       "The Hand-in-Hand Myanmar charity needed a live-bidding tool for an in-person event where bids had to sync instantly across phones, with admin tooling to manage items on the fly.",
     solution:
-      "Built a React + Firebase Firestore platform with live snapshot listeners for instant bid sync, admin CRUD with image galleries, and lightweight guest auth backed by localStorage.",
+      "Built a React + Firebase Firestore platform with live snapshot listeners for instant bid sync, admin CRUD with image galleries, and lightweight guest auth backed by localStorage. Shipped v1 for the live event; iterating on a long-term version with full auth, email notifications, and payment integration.",
     impact: [
+      "V1 shipped for the real charity event (sole developer)",
       "Live Firestore synchronization with sub-second bid propagation",
       "Admin dashboard with full CRUD and multi-image upload gallery",
       "Lightweight guest auth (no signup friction for event attendees)",
-      "Unit tests in `__test__/` directory; debounced search; optimized snapshot listeners",
+      "Unit tests in `src/__test__/` covering login validation, bidding-room search/filters, and component rendering",
     ],
     architecture: [
       "Frontend: React + Vite + custom hooks (useToast, useAnalytics)",
@@ -353,6 +373,8 @@ Key Features:
       "Auth: localStorage-backed guest registration (event-day friendly)",
     ],
     description: `Built a real-time bidding platform for the Hand-in-Hand Myanmar charity event, enabling live auctions with instant synchronization across all attendees.
+
+V1 shipped for the live event. Currently building a polished long-term version with planned features around full authentication, email notifications, and payment integration.
 
 Key Features:
 - Live Firestore synchronization for instant bid updates
@@ -366,7 +388,7 @@ Key Features:
     github: "https://github.com/Jpuntul/hand-in-hand-auction",
     demo: "",
     category: "Web",
-    status: "Completed",
+    status: "Ongoing",
     features: [
       "Live Bidding",
       "Admin CRUD",
@@ -374,7 +396,8 @@ Key Features:
       "Image Gallery",
       "Guest Auth",
     ],
-    myRole: "Sole developer — built end-to-end for a real charity event.",
+    myRole:
+      "Sole developer — built v1 end-to-end for a real charity event; now iterating on a long-term version.",
     highlight: true,
   },
   {

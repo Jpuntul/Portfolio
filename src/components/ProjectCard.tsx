@@ -81,7 +81,7 @@ export default function ProjectCard({ project, variant = "grid" }: Props) {
             {project.private ? (
               <span
                 className="inline-flex items-center gap-1 text-xs"
-                title="Private repository"
+                title={project.privateNote ?? "Private repository"}
               >
                 <Lock className="h-3.5 w-3.5" /> Private
               </span>
