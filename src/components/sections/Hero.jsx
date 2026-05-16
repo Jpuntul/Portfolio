@@ -48,14 +48,13 @@ const Hero = () => {
           </h2>
           <div className="text-lg mb-6 text-white/80">
             <span>
-              {personalInfo.citizenship} • Graduating{" "}
-              {personalInfo.graduationDate}
+              {personalInfo.citizenship} • {personalInfo.university} &apos;
+              {personalInfo.graduated.slice(-2)} • {personalInfo.availability}
             </span>
           </div>
           <p className="text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-            Passionate about creating innovative solutions through clean code
-            and modern technologies. Currently pursuing Software Engineering at{" "}
-            {personalInfo.university}.
+            {personalInfo.headline} B.Eng. Software Engineering,{" "}
+            {personalInfo.university} ({personalInfo.graduated}).
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-18">

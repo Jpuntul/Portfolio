@@ -8,30 +8,33 @@ const About = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">About Me</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            A passionate Software Engineering student with a love for creating
-            innovative solutions.
+            Full-stack software engineer with shipped systems, real metrics, and
+            a habit of testing what I build.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6 slide-in-left">
             <p className="text-gray-600 leading-relaxed">
-              Hello! I'm Jutipong, a Software Engineering student at{" "}
-              {personalInfo.university}. I'm passionate about full-stack
-              development and creating solutions that make a real impact.
+              Hi, I&rsquo;m Jutipong. I just graduated from{" "}
+              {personalInfo.university}&rsquo;s Software Engineering program (
+              {personalInfo.graduated}) and I&rsquo;m available for full-time
+              roles from July {personalInfo.graduated}.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              What drives me is the endless possibility to create solutions that
-              can impact people's lives. Whether it's building a mobile app that
-              helps users track their daily habits or developing a web platform
-              that connects communities, I find joy in turning ideas into
-              reality through code.
+              I lean backend &mdash; REST API design, schema and query
+              optimization, real-time data &mdash; but I ship the frontend too.
+              My favourite work right now is contributing to VeloSim, an
+              open-source bike-network simulator built with BIXI Montr&eacute;al
+              that uses WebSocket-driven live updates over a Python + React
+              stack.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              I'm particularly interested in full-stack development, machine
-              learning, and mobile app development. With my university education
-              and hands-on project experience, I'm constantly learning and
-              working on projects to build my skills.
+              Strongest projects: <strong>Healthcare Management System</strong>{" "}
+              (447 patients, 303 staff, 30+ endpoints, 75% query speedup),{" "}
+              <strong>Hand-in-Hand Auction</strong> (real-time charity bidding
+              on Firestore), and the <strong>SOEN-390 Campus Navigation</strong>{" "}
+              Flutter app (95% location accuracy, 30% faster routing).
             </p>
           </div>
 

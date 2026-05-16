@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
           background: linear-gradient(135deg, #64748b 0%, #334155 100%);
         }
       `}</style>
-      
+
       <div className="container mx-auto px-6">
         <div className="text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -16,7 +16,8 @@ const Footer = () => {
             <span className="text-2xl font-bold text-blue-400">Puntuleng</span>
           </div>
           <p className="text-gray-300 mb-6 max-w-md mx-auto">
-            Software Engineering student at Concordia University creating innovative solutions.
+            Full-stack software engineer — backend systems, real-time apps,
+            developer tools. Concordia &rsquo;26.
           </p>
           <div className="flex justify-center gap-4 mb-8">
             <a
@@ -46,12 +47,13 @@ const Footer = () => {
             </a>
           </div>
           <p className="text-gray-400 text-sm flex items-center justify-center gap-1">
-            Made with <FaHeart className="text-red-400" /> using React & Tailwind CSS
+            Made with <FaHeart className="text-red-400" /> using React &
+            Tailwind CSS
           </p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

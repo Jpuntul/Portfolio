@@ -19,38 +19,38 @@ const About = () => {
       icon: FaGraduationCap,
       title: "Education",
       items: [
-        `Software Engineering at ${personalInfo.university}`,
-        `Graduating ${personalInfo.graduationDate}`,
-        "Focus on full-stack development and algorithms",
-        "Strong academic performance in core courses",
+        `B.Eng. Software Engineering, ${personalInfo.university}`,
+        `Graduated ${personalInfo.graduated}`,
+        "Coursework: Data Structures, Databases, OS, Cloud Computing, Distributed Systems",
+        "Capstone: SOEN-390 campus navigation mobile app",
       ],
     },
     {
       icon: FaCode,
-      title: "Technical Growth",
+      title: "Where I've Shipped",
       items: [
-        "3 years of hands-on programming experience",
-        "Built multiple full-stack applications",
-        "Continuously expanding skillset through practice",
+        "Full-stack healthcare platform (Django + React, 447 patients / 303 staff)",
+        "Real-time charity auction platform on Firebase Firestore",
+        "Open-source bike network simulator with BIXI Montréal (ongoing)",
       ],
     },
     {
       icon: FaBook,
-      title: "Learning Style",
+      title: "How I Work",
       items: [
-        "Hands-on project-based learning",
-        "Building real applications to understand concepts",
-        "Combining theory with practical implementation",
+        "Test-driven, code-reviewed Agile sprints (currently weekly on VeloSim)",
+        "Strict CI gates: typecheck, lint, tests, pre-commit hooks",
+        "REST API design + clean architecture as default habits",
       ],
     },
   ];
 
   const currentFocus = [
-    "Advanced React patterns and state management",
-    "Machine Learning with Python and TensorFlow",
-    "AWS Cloud Services and serverless architecture",
-    "Database design and optimization",
-    "DevOps practices and CI/CD pipelines",
+    "Real-time systems and WebSocket-driven data streaming",
+    "Distributed systems and schema design",
+    "REST API design and clean backend architecture",
+    "CI/CD automation and pre-commit quality gates",
+    "Performance: query optimization, indexing, caching",
   ];
 
   return (
@@ -63,8 +63,11 @@ const About = () => {
               More About Me
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Deep dive into my educational background, learning approach, and
-              what I'm currently focused on in my software engineering journey.
+              I just graduated from {personalInfo.university}&rsquo;s Software
+              Engineering program ({personalInfo.graduated}) and I&rsquo;m
+              available for full-time roles from July {personalInfo.graduated}.
+              Below: how I work, what I&rsquo;ve shipped, and what I&rsquo;m
+              focused on right now.
             </p>
           </div>
         </section>
