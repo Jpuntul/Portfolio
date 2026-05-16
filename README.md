@@ -1,7 +1,9 @@
 # Jutipong Puntuleng — Portfolio
 
+[![CI](https://github.com/Jpuntul/Portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/Jpuntul/Portfolio/actions/workflows/ci.yml)
 [![Deploy](https://github.com/Jpuntul/Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/Jpuntul/Portfolio/actions/workflows/deploy.yml)
 [![Live](https://img.shields.io/badge/live-jpuntul.github.io%2FPortfolio-0d9488)](https://jpuntul.github.io/Portfolio/)
+[![Stack](https://img.shields.io/badge/stack-React%2019%20%C2%B7%20TS%20%C2%B7%20Tailwind%20v4%20%C2%B7%20Vite%206-0f766e)](#stack)
 
 Personal portfolio for a full-stack software engineering job search. Showcases shipped projects (Healthcare Management System, VeloSim/BIXI Montreal, Hand-in-Hand Auction, Campus Navigation) with metrics, architecture, and source.
 
@@ -36,6 +38,9 @@ Open http://localhost:5173/Portfolio/ — note the `/Portfolio/` basename, set i
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | ESLint over `**/*.{js,jsx,ts,tsx}` |
 | `npm run typecheck` | `tsc --noEmit` for full project typecheck |
+| `npm test` | Run the Vitest suite once |
+| `npm run test:watch` | Watch-mode tests |
+| `npm run test:coverage` | Vitest with V8 coverage report |
 
 ## Project structure
 
