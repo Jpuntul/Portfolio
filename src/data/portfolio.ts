@@ -1,4 +1,46 @@
-export const personalInfo = {
+export type ProjectCategory = "Web" | "Mobile";
+export type ProjectStatus = "Completed" | "Ongoing";
+export type ProjectRole = "Full Stack" | "Frontend" | "Backend";
+export type SkillLevel = "Proficient" | "Experienced" | "Familiar";
+
+export interface PersonalInfo {
+  name: string;
+  title: string;
+  citizenship: string;
+  university: string;
+  location: string;
+  email: string;
+  phone: string;
+  github: string;
+  linkedin: string;
+  graduationDate: string;
+}
+
+export interface Project {
+  id: number;
+  role: ProjectRole;
+  title: string;
+  shortDesc: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  github: string;
+  demo: string;
+  category: ProjectCategory;
+  status: ProjectStatus;
+  features: string[];
+  private?: boolean;
+  highlight?: boolean;
+}
+
+export interface Skill {
+  name: string;
+  experience: SkillLevel;
+}
+
+export type SkillCategories = Record<string, Skill[]>;
+
+export const personalInfo: PersonalInfo = {
   name: "Jutipong Puntuleng",
   title: "Software Engineering Student",
   citizenship: "Thai/Canadian",
@@ -11,7 +53,7 @@ export const personalInfo = {
   graduationDate: "April 2026",
 };
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: 1,
     role: "Full Stack",
@@ -213,7 +255,7 @@ export const projects = [
   },
 ];
 
-export const skills = {
+export const skills: SkillCategories = {
   "Programming Languages": [
     { name: "JavaScript", experience: "Proficient" },
     { name: "Python", experience: "Proficient" },

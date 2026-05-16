@@ -1,127 +1,84 @@
+# Jutipong Puntuleng — Portfolio
 
-# Jutipong Puntuleng — Personal Portfolio Website
-A modern portfolio website built with React, Vite, and Tailwind CSS.
+[![Deploy](https://github.com/Jpuntul/Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/Jpuntul/Portfolio/actions/workflows/deploy.yml)
+[![Live](https://img.shields.io/badge/live-jpuntul.github.io%2FPortfolio-0d9488)](https://jpuntul.github.io/Portfolio/)
 
-## ✨ Overview
-This site showcases my software engineering projects, skills, and experience. Explore my featured work, learn about my background, and get in touch!
+Personal portfolio for a full-stack software engineering job search. Showcases shipped projects (Healthcare Management System, VeloSim/BIXI Montreal, Hand-in-Hand Auction, Campus Navigation) with metrics, architecture, and source.
 
+**Live:** https://jpuntul.github.io/Portfolio/
 
-# Jutipong Puntuleng — Personal Portfolio Website
-A modern portfolio website built with React, Vite, and Tailwind CSS.
+## Stack
 
-## ✨ Overview
-This site showcases my software engineering projects, skills, and experience. Explore my featured work, learn about my background, and get in touch!
+- **Framework:** React 19 + TypeScript + Vite 6 (SWC)
+- **Styling:** Tailwind CSS v4 (zero-config, via `@tailwindcss/vite`)
+- **Routing:** React Router 7
+- **Forms:** EmailJS for the contact form
+- **Tooling:** ESLint (flat config) · Prettier · Husky + lint-staged · GitHub Actions
+- **Hosting:** GitHub Pages (deployed from `main`)
 
+## Getting started
 
-## Table of Contents
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
-- [Technologies Used](#-technologies-used)
-- [Project Highlights](#-project-highlights)
-- [Contact](#-contact)
-
-
-
-## 🚀 Getting Started
-
-
-### Prerequisites
-- Node.js (v18 or later recommended)
-- Node.js (v18 or later recommended)
-- npm or yarn
-
-yarn
-### Installation
 ```sh
-git clone https://github.com/Jpuntul/portfolio.git
-```sh
-git clone https://github.com/Jpuntul/portfolio.git
-cd portfolio
-npm install # or yarn
-npm run dev # or yarn dev
-npm install # or yarn
-npm run dev # or yarn dev
-```
-Then open [http://localhost:5173/](http://localhost:5173/) in your browser.
-Then open [http://localhost:5173/](http://localhost:5173/) in your browser.
-
-## 📁 Project Structure
-```
-/
-├── public/             # Static files (images, favicon, etc.)
-├── public/             # Static files (images, favicon, etc.)
-├── src/
-│   ├── assets/         # Static assets (SVGs, etc.)
-│   ├── components/     # Reusable React components
-│   ├── data/           # Portfolio data (projects, skills, info)
-│   ├── pages/          # Page components (Home, About, Projects, Contact)
-│   ├── App.jsx         # Main App component
-│   ├── assets/         # Static assets (SVGs, etc.)
-│   ├── components/     # Reusable React components
-│   ├── data/           # Portfolio data (projects, skills, info)
-│   ├── pages/          # Page components (Home, About, Projects, Contact)
-│   ├── App.jsx         # Main App component
-│   ├── index.css       # Global styles and Tailwind directives
-│   └── main.jsx        # Entry point
-│   └── main.jsx        # Entry point
-├── .gitignore
-├── index.html
-├── package.json
-├── README.md
-├── tailwind.config.js  # Tailwind CSS configuration
-├── vite.config.js      # Vite configuration
-├── vite.config.js      # Vite configuration
+git clone https://github.com/Jpuntul/Portfolio.git
+cd Portfolio
+npm install
+npm run dev
 ```
 
+Open http://localhost:5173/Portfolio/ — note the `/Portfolio/` basename, set in [vite.config.ts](vite.config.ts) and [src/App.tsx](src/App.tsx) so it matches the GitHub Pages path.
 
+## Scripts
 
-## 🔧 Technologies Used
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [EmailJS](https://www.emailjs.com/) (Contact form)
-- [React Router](https://reactrouter.com/)
-- [React Icons](https://react-icons.github.io/react-icons/)
+| Command | What it does |
+|---|---|
+| `npm run dev` | Vite dev server with HMR |
+| `npm run build` | Typecheck + production build to `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | ESLint over `**/*.{js,jsx,ts,tsx}` |
+| `npm run typecheck` | `tsc --noEmit` for full project typecheck |
 
+## Project structure
 
+```
+src/
+├── App.tsx               # Router + layout
+├── main.tsx              # React entry point
+├── index.css             # Tailwind import + design tokens
+├── constants/
+│   └── ui.ts             # Magic-number constants (scroll thresholds, etc.)
+├── data/
+│   └── portfolio.ts      # Typed source of truth (personalInfo, projects, skills)
+├── pages/                # Home, About, Projects, Contact, NotFound
+├── components/
+│   ├── layout/           # Header, Footer
+│   ├── sections/         # Hero, About, Projects, Skills (composed on Home)
+│   └── *.tsx             # Reusable widgets (ProjectCard, BackToTop, etc.)
+└── vite-env.d.ts         # Vite + import.meta.env types
 
-## ✨ Features
-This portfolio includes:
+public/
+├── images/projects/      # Project screenshots
+├── resume.pdf            # Downloadable resume
+└── 404.html              # SPA fallback for GitHub Pages
+```
 
-- Responsive design for desktop and mobile
-- Animated hero and section transitions
-- Filterable and searchable project gallery
-- Contact form with EmailJS integration
-- Skills and experience overview
-- Clean, modern UI with Tailwind CSS
+All project content lives in [src/data/portfolio.ts](src/data/portfolio.ts) — adding a project or updating metrics is a one-file edit, no component changes needed. The typed schema (`Project`, `Skill`, `PersonalInfo`) is enforced at build time.
 
-See the Projects page for a full list of my work!
+## Environment
 
-- [EmailJS](https://www.emailjs.com/) (Contact form)
-- [React Router](https://reactrouter.com/)
-- [React Icons](https://react-icons.github.io/react-icons/)
+The contact form posts via EmailJS. Set these in `.env` (see [.env.example](.env.example)) or as GitHub repo secrets for the deploy workflow:
 
+```
+VITE_EMAILJS_SERVICE_ID=...
+VITE_EMAILJS_TEMPLATE_ID=...
+VITE_EMAILJS_PUBLIC_KEY=...
+```
 
+## Deployment
 
-## ✨ Features
-This portfolio includes:
+Pushes to `main` trigger [.github/workflows/deploy.yml](.github/workflows/deploy.yml): install → lint → build → publish to GitHub Pages. The `/Portfolio/` basename in [vite.config.ts](vite.config.ts) is required for the Pages subpath.
 
-- Responsive design for desktop and mobile
-- Animated hero and section transitions
-- Filterable and searchable project gallery
-- Contact form with EmailJS integration
-- Skills and experience overview
-- Clean, modern UI with Tailwind CSS
+## Contact
 
-See the Projects page for a full list of my work!
-
-
-## 📬 Contact
-Questions or suggestions? Feel free to reach out:
-Questions or suggestions? Feel free to reach out:
-- Email: p.jutipong13@gmail.com
-- LinkedIn: [jpuntul](https://www.linkedin.com/in/jpuntul)
-- GitHub: [Jpuntul](https://github.com/Jpuntul)
-- LinkedIn: [jpuntul](https://www.linkedin.com/in/jpuntul)
-- GitHub: [Jpuntul](https://github.com/Jpuntul)
+- **Email:** p.jutipong13@gmail.com
+- **LinkedIn:** [linkedin.com/in/jpuntul](https://www.linkedin.com/in/jpuntul/)
+- **GitHub:** [github.com/Jpuntul](https://github.com/Jpuntul)
