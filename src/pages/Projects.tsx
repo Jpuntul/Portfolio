@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import { projects } from "../data/portfolio";
 import type { Project } from "../data/portfolio";
 import ProjectCard from "../components/ProjectCard";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const CATEGORIES: ("all" | Project["category"])[] = ["all", "Web", "Mobile"];
 const STATUSES: ("all" | Project["status"])[] = ["all", "Completed", "Ongoing"];
@@ -14,6 +15,10 @@ const ROLES: ("all" | Project["role"])[] = [
 ];
 
 export default function Projects() {
+  usePageMeta({
+    title: "Projects · Jutipong Puntuleng",
+    description: `${projects.length} projects across full-stack web, real-time systems, and cross-platform mobile.`,
+  });
   const [category, setCategory] = useState<(typeof CATEGORIES)[number]>("all");
   const [status, setStatus] = useState<(typeof STATUSES)[number]>("all");
   const [role, setRole] = useState<(typeof ROLES)[number]>("all");

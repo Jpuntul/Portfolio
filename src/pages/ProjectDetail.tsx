@@ -4,10 +4,18 @@ import { ArrowLeft, ExternalLink, Lock } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { projects } from "../data/portfolio";
 import NotFound from "./NotFound";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
+
+  usePageMeta({
+    title: project
+      ? `${project.title} · Jutipong Puntuleng`
+      : "Project not found",
+    description: project?.tagline ?? project?.shortDesc,
+  });
 
   if (!project) return <NotFound />;
 

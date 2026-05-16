@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { personalInfo } from "../data/portfolio";
 import { FORM_TIMEOUT } from "../constants/ui";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 type Status = "" | "submitting" | "success" | "error";
 
@@ -22,6 +23,11 @@ const initialForm: FormState = {
 };
 
 export default function Contact() {
+  usePageMeta({
+    title: "Contact · Jutipong Puntuleng",
+    description:
+      "Get in touch. Available for full-time software engineering roles from July 2026.",
+  });
   const [form, setForm] = useState<FormState>(initialForm);
   const [status, setStatus] = useState<Status>("");
 

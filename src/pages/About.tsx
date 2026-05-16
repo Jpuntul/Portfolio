@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, GraduationCap, Languages, MapPin } from "lucide-react";
 import { personalInfo } from "../data/portfolio";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const timeline = [
   {
@@ -38,6 +39,11 @@ const currentFocus = [
 ];
 
 export default function About() {
+  usePageMeta({
+    title: "About · Jutipong Puntuleng",
+    description:
+      "How I got here, what I'm working on next. Concordia '26, available from July 2026.",
+  });
   return (
     <main id="main">
       <section className="relative isolate overflow-hidden pt-32 pb-16">
