@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { FaArrowUp } from "react-icons/fa";
+import { ArrowUp } from "lucide-react";
 import { SCROLL_THRESHOLD } from "../constants/ui";
 
-const BackToTop = () => {
+export default function BackToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -13,19 +13,16 @@ const BackToTop = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <button
-      onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-green-500 text-white shadow-lg transition-opacity duration-300 hover:bg-green-600 ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
+      className={`fixed bottom-6 right-6 z-40 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent-600 text-white shadow-lg transition-opacity duration-200 hover:bg-accent-700 ${
+        visible ? "opacity-100" : "pointer-events-none opacity-0"
+      }`}
     >
-      <FaArrowUp size={20} />
+      <ArrowUp className="h-4 w-4" />
     </button>
   );
-};
-
-export default BackToTop;
+}
