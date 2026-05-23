@@ -75,7 +75,9 @@ export const personalInfo: PersonalInfo = {
   languagesSpoken: [
     { name: "Thai", level: "Native" },
     { name: "English", level: "Fluent" },
-    { name: "French", level: "Intermediate" },
+    { name: "Chinese", level: "Basic" },
+    { name: "French", level: "Basic" },
+    { name: "Japanese", level: "Basic" },
   ],
 };
 
@@ -92,28 +94,32 @@ export const projects: Project[] = [
     problem:
       "Healthcare admins were juggling patient records, staff scheduling, and facility coordination across disconnected tools, with slow queries and no audit-friendly access control.",
     solution:
-      "Built a Django REST + React/TypeScript platform with hybrid public/authenticated access, role-based permissions, and analytics dashboards backed by an indexed MySQL schema.",
+      "Team phase in PHP + MySQL (schema, triggers, query optimization). Solo phase: rewrote the full stack to Django REST + React/TypeScript with hybrid auth, role-based permissions, and analytics dashboards.",
     impact: [
       "Manages 447+ patient records, 303+ staff accounts, and 11+ medical facilities",
-      "Optimized database queries by 75% (3s → 0.7s) via indexing, caching, and schema redesign",
-      "Designed a robust REST API with 15+ endpoints powering interactive data analytics dashboards",
+      "Team phase: sole PHP developer; co-built MySQL schema, triggers, and query optimizations (75% speedup, 3s → 0.7s)",
+      "Solo phase: rewrote full stack to Django REST + React/TypeScript",
+      "Designed 15+ REST API endpoints powering interactive data analytics dashboards",
       "Enforced quality with 13 pre-commit hooks (flake8, isort, ESLint, TypeScript, Prettier, Black)",
     ],
     architecture: [
-      "Backend: Django 4.2.25 + Django REST Framework, token auth, MySQL (prod) / SQLite (dev)",
-      "Frontend: React 19.1.1 + TypeScript + Vite + Tailwind CSS + Axios",
+      "Team phase: PHP + MySQL (schema, triggers, query optimization)",
+      "Solo rewrite: Django 4.2 + Django REST Framework, token auth, MySQL (prod) / SQLite (dev)",
+      "Frontend: React 19 + TypeScript + Vite + Tailwind CSS + Axios",
       "Tooling: 13 pre-commit hooks, GitHub Actions CI",
     ],
-    description: `Full-stack healthcare platform built solo to manage patient records, staff scheduling, and facility coordination.
+    description: `Full-stack healthcare platform with two phases.
 
-      Key Achievements:
-      - Manages 447+ patient records (with Canadian Medicare numbers), 303+ healthcare professionals, and 11+ medical facilities (hospitals, clinics, pharmacies)
-      - Optimized database queries by 75% (3s → 0.7s) through indexing, caching, and improved schema design
-      - Designed a REST API with 15+ endpoints powering interactive analytics dashboards
-      - Implemented hybrid auth: public read-only browsing, token-authenticated CRUD with admin-only registration
-      - Enforced quality with 13 pre-commit hooks (flake8, isort, ESLint, TypeScript, Prettier, Black)
+Team phase (PHP + MySQL):
+- Sole PHP developer; co-built MySQL schema, triggers, and query optimizations with the team
+- 75% query speedup (3s → 0.7s) via indexing, caching, and schema redesign
 
-      Built for healthcare admins who were juggling patient records, scheduling, and facility coordination across disconnected tools.`,
+Solo rewrite (Django REST + React/TypeScript):
+- Rebuilt the entire backend in Django REST Framework with token auth and role-based access control
+- Built the React/TypeScript frontend from scratch (replacing PHP templates)
+- Designed 15+ REST API endpoints powering interactive analytics dashboards
+- Manages 447+ patient records, 303+ staff, 11+ medical facilities
+- Enforced quality with 13 pre-commit hooks (flake8, isort, ESLint, TypeScript, Prettier, Black)`,
     image: "images/projects/hms.png",
     technologies: ["Django", "Django REST", "React", "TypeScript", "MySQL"],
     github: "https://github.com/Jpuntul/HMS",
@@ -127,7 +133,7 @@ export const projects: Project[] = [
       "Role-Based Access Control",
     ],
     myRole:
-      "Sole developer. Built the full Django backend, the React/TypeScript frontend, the hybrid-auth model, the MySQL schema and query optimization work, and the 13-hook pre-commit pipeline.",
+      "Team phase: sole PHP developer; co-built MySQL schema, triggers, and query optimizations. Solo phase: rewrote the full stack to Django REST + React/TypeScript — backend, frontend, auth, REST API, and 13-hook pre-commit pipeline.",
     highlight: true,
   },
   {
@@ -353,40 +359,52 @@ Key Features:
     slug: "hand-in-hand-auction",
     role: "Full Stack",
     title: "Hand-in-Hand Auction",
-    tagline: "Real-time charity auction platform with live Firestore bidding.",
+    tagline:
+      "Shipped a charity auction in under a week for non-devs, then rebuilt it solo with Next.js + Supabase.",
     shortDesc:
-      "Real-time bidding platform for the Hand-in-Hand Myanmar charity. V1 shipped for the live event; now building a polished long-term version.",
+      "Finished a non-developer team's HTML + Firebase app under a one-week deadline for a live charity event, then took full ownership and rebuilt the platform solo.",
     problem:
-      "The Hand-in-Hand Myanmar charity needed a live-bidding tool for an in-person event where bids had to sync instantly across phones, with admin tooling to manage items on the fly.",
+      "The Hand-in-Hand Myanmar charity needed a working live-bidding tool for an in-person event. A non-developer team had started with plain HTML + Firebase but couldn't finish it in time.",
     solution:
-      "Built a React + Firebase Firestore platform with live snapshot listeners for instant bid sync, admin CRUD with image galleries, and lightweight guest auth backed by localStorage. Shipped v1 for the live event; iterating on a long-term version with full auth, email notifications, and payment integration.",
+      "Stepped in with less than a week to go: finished the HTML + Firebase build and shipped it for the live event. Afterwards, took full ownership and rewrote the platform solo — first to React + Vite + Firestore, then to Next.js + TypeScript + Supabase — for a stable, maintainable long-term foundation.",
     impact: [
-      "V1 shipped for the real charity event (sole developer)",
-      "Live Firestore synchronization with sub-second bid propagation",
+      "Delivered the working HTML + Firebase app for the real live charity event in under one week",
+      "Rewrote solo post-event: React + Vite + Firestore (real-time bidding, admin CRUD, guest auth)",
       "Admin dashboard with full CRUD and multi-image upload gallery",
-      "Lightweight guest auth (no signup friction for event attendees)",
-      "Unit tests in `src/__test__/` covering login validation, bidding-room search/filters, and component rendering",
+      "Lightweight guest auth — no signup friction for event-day attendees",
+      "Further migrated to Next.js + TypeScript + Supabase for long-term stability and new features",
     ],
     architecture: [
-      "Frontend: React + Vite + custom hooks (useToast, useAnalytics)",
-      "Realtime DB: Firebase Firestore with snapshot listeners",
-      "Auth: localStorage-backed guest registration (event-day friendly)",
+      "Event build: HTML + Firebase (finished with the original non-dev team's stack)",
+      "V2 (solo rewrite): React + Vite + Firebase Firestore — real-time snapshot listeners, localStorage guest auth",
+      "V3 (current): Next.js + TypeScript + Supabase (PostgreSQL) — App Router, Vercel deployment",
     ],
-    description: `Built a real-time bidding platform for the Hand-in-Hand Myanmar charity event, enabling live auctions with instant synchronization across all attendees.
+    description: `Stepped in to help a non-developer team finish their HTML + Firebase charity auction app with less than a week before the live event. Kept their existing stack, completed the missing pieces, and shipped it in time.
 
-V1 shipped for the live event. Currently building a polished long-term version with planned features around full authentication, email notifications, and payment integration.
+After the event, took full solo ownership and rebuilt the platform from scratch:
 
-Key Features:
-- Live Firestore synchronization for instant bid updates
-- Admin dashboard with full CRUD for auction items
-- Multi-image upload gallery for showcasing items
+V2 (solo rewrite — React + Vite + Firebase):
+- Real-time Firestore snapshot listeners for instant bid sync
+- Admin dashboard with full CRUD for managing auction items on the fly
+- Multi-image upload gallery, watchlist, advanced search/filter
 - Lightweight guest authentication using localStorage
-- Real-time highest-bid tracking with toast notifications
-- Watchlist, advanced search/filter, bid validation with increment enforcement`,
-    image: "images/projects/hand-in-hand.svg",
-    technologies: ["React", "Vite", "Firebase", "Firestore", "JavaScript"],
+- Toast notifications and bid increment enforcement
+
+V3 (current — long-term migration):
+- Full rewrite to Next.js + TypeScript + Supabase (PostgreSQL)
+- App Router architecture with server components, deployed on Vercel
+- Planned: full auth, email notifications, payment integration`,
+    image: "images/projects/hand-in-hand.png",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "React",
+      "Vite",
+      "Firebase",
+    ],
     github: "https://github.com/Jpuntul/hand-in-hand-auction",
-    demo: "",
+    demo: "https://hand-in-hand-auction.vercel.app",
     category: "Web",
     status: "Ongoing",
     features: [
@@ -397,7 +415,7 @@ Key Features:
       "Guest Auth",
     ],
     myRole:
-      "Sole developer — built v1 end-to-end for a real charity event; now iterating on a long-term version.",
+      "Joined a non-developer team with < 1 week to event day — finished their HTML + Firebase app and shipped it for the live event. Took full solo ownership afterwards: rewrote to React + Vite + Firestore, then migrated again to Next.js + TypeScript + Supabase.",
     highlight: true,
   },
   {

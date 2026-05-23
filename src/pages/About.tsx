@@ -8,7 +8,7 @@ const timeline = [
     period: `${personalInfo.graduated}`,
     title: "Graduated · B.Eng. Software Engineering",
     place: `${personalInfo.university}, Montréal`,
-    body: "Coursework in data structures, databases, OS, cloud computing, distributed systems. Capstone: SOEN-390 campus navigation Flutter app.",
+    body: "Coursework in data structures, databases, OS, cloud computing, distributed systems, AI, data analytics, and testing/QA. Capstone: SOEN-390 campus navigation Flutter app.",
   },
   {
     period: "Sep 2025 - Apr 2026",
@@ -18,15 +18,15 @@ const timeline = [
   },
   {
     period: "May 2025 - Present",
-    title: "Hand-in-Hand Auction · Sole developer",
-    place: "Charity event, end-to-end ship",
-    body: "Built and shipped a real-time bidding platform on React + Firebase Firestore for an in-person charity event. Admin CRUD, image gallery, live bid sync.",
+    title: "Hand-in-Hand Auction · Rescue + solo rebuild",
+    place: "Charity event",
+    body: "Joined a non-developer team with < 1 week to go and finished their HTML + Firebase app in time for the live event. Afterwards, took full solo ownership: rewrote to React + Vite + Firestore, then migrated again to Next.js + TypeScript + Supabase for a stable long-term platform.",
   },
   {
     period: "June 2025 - Present",
     title: "Healthcare Management System · Full-stack",
-    place: "Coursework + capstone-level project",
-    body: "Django REST + React/TypeScript + MySQL. 447 patients, 303 staff, 11+ facilities, 15+ endpoints, 75% query speedup via indexing/caching/schema redesign.",
+    place: "Team (PHP + MySQL) → solo rewrite",
+    body: "Team phase: sole PHP developer; co-built MySQL schema, triggers, and query optimizations (75% speedup, 3s → 0.7s). Solo phase: rewrote full stack to Django REST + React/TypeScript, 15+ API endpoints, 447 patients, 303 staff, 11+ facilities.",
   },
   {
     period: "Jan 2025 - Apr 2025",

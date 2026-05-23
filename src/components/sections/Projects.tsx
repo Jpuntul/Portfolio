@@ -29,7 +29,7 @@ export default function Projects() {
               id="featured-projects-heading"
               className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl dark:text-white"
             >
-              Things I&rsquo;ve shipped
+              Things I&rsquo;ve built
             </h2>
           </div>
           <Link
