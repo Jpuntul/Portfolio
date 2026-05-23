@@ -57,7 +57,7 @@ export default function Hero() {
         >
           {personalInfo.headline} B.Eng. Software Engineering,{" "}
           {personalInfo.university} ({personalInfo.graduated}).{" "}
-          {personalInfo.citizenship}, based in Montréal.
+          {personalInfo.citizenship}, based in {personalInfo.location}.
         </motion.p>
 
         <motion.div

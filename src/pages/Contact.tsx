@@ -78,7 +78,7 @@ export default function Contact() {
           </h1>
           <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
             {personalInfo.availability}. Open to full-stack and backend-leaning
-            roles in Montréal or Bangkok (or remote).
+            roles in {personalInfo.location}.
           </p>
         </div>
       </section>
