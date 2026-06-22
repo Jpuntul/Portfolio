@@ -3,16 +3,30 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-accent-50: #f0fdfa;
-  --color-accent-100: #ccfbf1;
-  --color-accent-200: #99f6e4;
-  --color-accent-300: #5eead4;
-  --color-accent-400: #2dd4bf;
-  --color-accent-500: #14b8a6;
-  --color-accent-600: #0d9488;
-  --color-accent-700: #0f766e;
-  --color-accent-800: #115e59;
-  --color-accent-900: #134e4a;
+  /* Gold accent */
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #f8c000;
+  --color-accent-700: #d4a017;
+  --color-accent-800: #a07b0a;
+  --color-accent-900: #7a5c08;
+
+  /* Navy blue slate — replaces default gray so all dark:slate-* classes use navy */
+  --color-slate-50: #f0f4ff;
+  --color-slate-100: #dce8ff;
+  --color-slate-200: #b8ccee;
+  --color-slate-300: #8099bb;
+  --color-slate-400: #6a8ab0;
+  --color-slate-500: #4a6080;
+  --color-slate-600: #2a3d60;
+  --color-slate-700: #1e2e48;
+  --color-slate-800: #0c1428;
+  --color-slate-900: #060c17;
+  --color-slate-950: #04070f;
 
   --color-surface-0: #ffffff;
   --color-surface-1: #f8fafc;
@@ -45,8 +59,8 @@
 }
 
 .dark {
-  color: var(--color-ink-100);
-  background-color: #020617;
+  color: var(--color-slate-100);
+  background-color: var(--color-slate-950);
   color-scheme: dark;
 }
 
@@ -78,15 +92,15 @@ html {
 @layer utilities {
   .grid-bg {
     background-image:
-      linear-gradient(rgba(15, 118, 110, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(15, 118, 110, 0.06) 1px, transparent 1px);
+      linear-gradient(rgba(26, 56, 100, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 56, 100, 0.08) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
   .dark .grid-bg {
     background-image:
-      linear-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(45, 212, 191, 0.06) 1px, transparent 1px);
+      linear-gradient(rgba(12, 20, 40, 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(12, 20, 40, 0.6) 1px, transparent 1px);
   }
 
   /* Legacy classes still referenced during the Phase 3 transition. */
@@ -104,6 +118,6 @@ html {
     }
   }
   .hero-gradient {
-    background: linear-gradient(135deg, #0d9488 0%, #115e59 100%);
+    background: linear-gradient(135deg, #f8c000 0%, #a07b0a 100%);
   }
 }

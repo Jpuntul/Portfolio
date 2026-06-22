@@ -8,7 +8,7 @@ Copy the markdown below into a new public repo named exactly `Jpuntul/Jpuntul`, 
 ### Hi — I'm Jutipong 👋
 
 **Software Engineer** · Backend systems, real-time apps, distributed data
-B.Eng. Software Engineering, Concordia (2026) · 🇹🇭/🇨🇦 · Montréal / Bangkok
+B.Eng. Software Engineering, Concordia (2026) · 🇹🇭/🇨🇦 · Bangkok
 Available for full-time roles from **August 2026**.
 
 #### 🚀 Recently shipped

@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/Portfolio/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0d9488" />
+    <meta name="theme-color" content="#04070f" />
+    <!-- Apply dark class before first paint to avoid flash -->
+    <script>
+      (function() {
+        var stored = localStorage.getItem('theme');
+        if (stored !== 'light') document.documentElement.classList.add('dark');
+      })();
+    </script>
 
     <!-- SPA redirect handler for GitHub Pages (see public/404.html) -->
     <script type="text/javascript">
@@ -83,9 +90,8 @@
         },
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Montréal",
-          "addressRegion": "QC",
-          "addressCountry": "CA"
+          "addressLocality": "Bangkok",
+          "addressCountry": "TH"
         },
         "sameAs": [
           "https://github.com/Jpuntul",

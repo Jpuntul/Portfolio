@@ -62,14 +62,14 @@ export const personalInfo: PersonalInfo = {
   name: "Jutipong Puntuleng",
   title: "Full-Stack Software Engineer",
   headline:
-    "Software Engineer building backend systems, real-time apps, and developer tools.",
+    "Software Engineer who ships across the full stack — real-time apps, backend systems, and multi-stack rewrites.",
   availability: "Available for full-time roles from August 2026",
   citizenship: "Thai/Canadian",
   university: "Concordia University",
   graduated: "2026",
-  location: "Montréal, QC • Open to relocate to Bangkok",
+  location: "Bangkok, Thailand",
   email: "p.jutipong13@gmail.com",
-  phone: "+1 (514) 585-5823",
+  phone: "+66 62-342-5318",
   github: "https://github.com/Jpuntul",
   linkedin: "https://www.linkedin.com/in/jpuntul/",
   languagesSpoken: [

@@ -43,7 +43,7 @@ Replace:
 
 With:
 
-> Software Engineer · Backend systems, real-time apps, distributed data · Concordia ’26 · Available from August 2026 · Montréal / 🇹🇭 Bangkok
+> Software Engineer · Backend systems, real-time apps, distributed data · Concordia ’26 · Available from August 2026 · 🇹🇭 Bangkok
 
 ### Profile README
 

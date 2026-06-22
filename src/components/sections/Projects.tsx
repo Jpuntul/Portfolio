@@ -1,65 +1,83 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import { projects } from "../../data/portfolio";
-import ProjectCard from "../ProjectCard";
 
-const featuredProjects = projects.filter((p) => p.highlight);
+const featured = projects.filter((p) => p.highlight);
 
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="border-t border-slate-200 bg-slate-50 py-20 md:py-28 dark:border-slate-800 dark:bg-slate-950"
-      aria-labelledby="featured-projects-heading"
+      data-snap-section
+      className="flex h-screen flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 py-16 md:px-16"
+      style={{ scrollSnapAlign: "start" }}
     >
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-12 flex items-end justify-between gap-4"
-        >
+      <div className="mx-auto w-full max-w-5xl">
+        {/* Header row */}
+        <div className="mb-0 flex items-end justify-between">
           <div>
-            <p className="mb-2 font-mono text-sm font-medium uppercase tracking-wider text-accent-700 dark:text-accent-400">
-              Featured work
+            <p className="mb-1 text-[80px] font-black leading-none tracking-tighter text-slate-900 select-none">
+              02
             </p>
-            <h2
-              id="featured-projects-heading"
-              className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl dark:text-white"
-            >
-              Things I&rsquo;ve built
+            <h2 className="text-3xl font-bold tracking-tight text-slate-100 md:text-4xl">
+              Selected Work
             </h2>
           </div>
           <Link
             to="/projects"
-            className="hidden items-center gap-1 text-sm font-medium text-accent-700 hover:text-accent-800 sm:inline-flex dark:text-accent-300 dark:hover:text-accent-200"
+            className="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-accent-600"
           >
-            All projects <ArrowRight className="h-3.5 w-3.5" />
+            All projects →
           </Link>
-        </motion.div>
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {featuredProjects.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-            >
-              <ProjectCard project={project} variant="featured" />
-            </motion.div>
-          ))}
         </div>
 
-        <div className="mt-10 flex justify-center sm:hidden">
+        {/* Column labels */}
+        <div className="mt-6 grid grid-cols-[48px_1fr_200px_140px] gap-4 border-b border-slate-800 pb-3 text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-500">
+          <span>#</span>
+          <span>Project</span>
+          <span className="hidden md:block">Description</span>
+          <span className="hidden md:block">Stack</span>
+        </div>
+
+        {/* Project rows */}
+        {featured.map((project, i) => (
+          <Link
+            key={project.id}
+            to={`/projects/${project.slug}`}
+            className="group grid grid-cols-[48px_1fr] gap-4 border-b border-slate-800 py-5 transition-colors md:grid-cols-[48px_1fr_200px_140px]"
+          >
+            <span className="pt-0.5 text-xs font-medium tabular-nums text-slate-500">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <p className="text-lg font-bold tracking-tight text-slate-100 transition-colors group-hover:text-accent-600 md:text-xl">
+                {project.title}
+              </p>
+              <p className="mt-0.5 text-xs text-slate-400 md:hidden">
+                {project.tagline ?? project.shortDesc}
+              </p>
+            </div>
+            <p className="hidden self-center text-xs leading-relaxed text-slate-400 md:block">
+              {project.tagline ?? project.shortDesc}
+            </p>
+            <div className="hidden self-center md:flex flex-wrap gap-1">
+              {project.technologies.slice(0, 3).map((t) => (
+                <span
+                  key={t}
+                  className="border border-slate-800 px-2 py-0.5 text-[10px] text-slate-500"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </Link>
+        ))}
+
+        <div className="mt-6 md:hidden">
           <Link
             to="/projects"
-            className="inline-flex items-center gap-1 text-sm font-medium text-accent-700 dark:text-accent-300"
+            className="text-sm font-medium text-accent-600 hover:text-accent-500"
           >
-            All projects <ArrowRight className="h-3.5 w-3.5" />
+            View all projects →
           </Link>
         </div>
       </div>
