@@ -120,4 +120,61 @@ html {
   .hero-gradient {
     background: linear-gradient(135deg, #f8c000 0%, #a07b0a 100%);
   }
+
+  /* Hero name outline: box draws clockwise once, then breathes with a slow glow. */
+  @keyframes box-draw-x {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes box-draw-y {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+  @keyframes box-glow {
+    0%,
+    100% {
+      opacity: 0.85;
+      box-shadow: 0 0 2px 0 rgba(248, 192, 0, 0.4);
+    }
+    50% {
+      opacity: 1;
+      box-shadow: 0 0 8px 1px rgba(248, 192, 0, 0.9);
+    }
+  }
+  .hero-box-top {
+    transform: scaleX(0);
+    transform-origin: left;
+    animation:
+      box-draw-x 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards,
+      box-glow 5s ease-in-out 1.6s infinite;
+  }
+  .hero-box-right {
+    transform: scaleY(0);
+    transform-origin: top;
+    animation:
+      box-draw-y 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards,
+      box-glow 5s ease-in-out 1.6s infinite;
+  }
+  .hero-box-bottom {
+    transform: scaleX(0);
+    transform-origin: right;
+    animation:
+      box-draw-x 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0.9s forwards,
+      box-glow 5s ease-in-out 1.6s infinite;
+  }
+  .hero-box-left {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    animation:
+      box-draw-y 0.3s cubic-bezier(0.65, 0, 0.35, 1) 1.2s forwards,
+      box-glow 5s ease-in-out 1.6s infinite;
+  }
 }

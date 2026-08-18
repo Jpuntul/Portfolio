@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import { personalInfo } from "../../data/portfolio";
+import { SECTION_REVEAL } from "../../constants/ui";
 
 const facts = [
   { label: "Location", value: personalInfo.location },
@@ -9,7 +11,7 @@ const facts = [
   },
   { label: "Available", value: "August 2026", gold: true },
   { label: "Focus", value: "Backend-leaning full-stack" },
-  { label: "Languages", value: "Thai · English · French · Chinese · Japanese" },
+  { label: "Languages", value: "Thai · English" },
 ];
 
 export default function About() {
@@ -20,7 +22,10 @@ export default function About() {
       className="flex h-screen flex-col justify-center border-t border-slate-800 bg-slate-950"
       style={{ scrollSnapAlign: "start" }}
     >
-      <div className="grid h-full grid-cols-1 lg:grid-cols-2">
+      <motion.div
+        {...SECTION_REVEAL}
+        className="grid h-full grid-cols-1 lg:grid-cols-2"
+      >
         {/* Left */}
         <div className="flex flex-col justify-center border-b border-slate-800 px-8 py-16 lg:border-b-0 lg:border-r lg:px-16">
           <p className="mb-1 text-[80px] font-black leading-none tracking-tighter text-slate-900 select-none">
@@ -39,6 +44,14 @@ export default function About() {
             query speedup), Hand-in-Hand real-time charity auction on Firestore,
             and the SOEN-390 Flutter campus navigation capstone.
           </p>
+          <a
+            href={`${import.meta.env.BASE_URL}Jutipong_Puntuleng_resume.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex w-fit items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-accent-600"
+          >
+            Résumé (PDF) →
+          </a>
         </div>
 
         {/* Right — fact grid */}
@@ -59,7 +72,7 @@ export default function About() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

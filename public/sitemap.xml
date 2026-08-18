@@ -2,72 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jpuntul.github.io/Portfolio</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://jpuntul.github.io/Portfolio/about</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://jpuntul.github.io/Portfolio/projects</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://jpuntul.github.io/Portfolio/contact</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/hms</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/onmi-rentals</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/campus-navigation</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/velosim</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/delivery-system</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/calculator</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/date-countdown</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/hand-in-hand-auction</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/adopt-cat-dog</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://jpuntul.github.io/Portfolio/projects/portfolio</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

@@ -1,19 +1,19 @@
 import { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
+  Navigate,
   Route,
   Routes,
   useLocation,
 } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import BackToTop from "./components/BackToTop";
 import Home from "./pages/Home";
 
-const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
-const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function PageFallback() {
@@ -38,10 +38,13 @@ function Layout() {
         <Suspense fallback={<PageFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<Navigate to="/#about" replace />} />
+            <Route
+              path="/contact"
+              element={<Navigate to="/#contact" replace />}
+            />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
-            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
@@ -54,8 +57,10 @@ function Layout() {
 
 export default function App() {
   return (
-    <Router basename="/Portfolio">
-      <Layout />
-    </Router>
+    <MotionConfig reducedMotion="user">
+      <Router basename="/Portfolio">
+        <Layout />
+      </Router>
+    </MotionConfig>
   );
 }

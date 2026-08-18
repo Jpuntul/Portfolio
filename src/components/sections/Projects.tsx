@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { projects } from "../../data/portfolio";
+import { SECTION_REVEAL } from "../../constants/ui";
 
 const featured = projects.filter((p) => p.highlight);
 
@@ -11,22 +13,22 @@ export default function Projects() {
       className="flex h-screen flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 py-16 md:px-16"
       style={{ scrollSnapAlign: "start" }}
     >
-      <div className="mx-auto w-full max-w-5xl">
+      <motion.div {...SECTION_REVEAL} className="mx-auto w-full max-w-5xl">
         {/* Header row */}
         <div className="mb-0 flex items-end justify-between">
           <div>
             <p className="mb-1 text-[80px] font-black leading-none tracking-tighter text-slate-900 select-none">
-              02
+              03
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-100 md:text-4xl">
-              Selected Work
+              Projects
             </h2>
           </div>
           <Link
             to="/projects"
-            className="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-accent-600"
+            className="mb-1 inline-flex items-center gap-1.5 border border-accent-600 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent-600 transition-colors hover:bg-accent-600 hover:text-slate-950"
           >
-            All projects →
+            See all →
           </Link>
         </div>
 
@@ -75,12 +77,12 @@ export default function Projects() {
         <div className="mt-6 md:hidden">
           <Link
             to="/projects"
-            className="text-sm font-medium text-accent-600 hover:text-accent-500"
+            className="inline-flex items-center gap-1.5 border border-accent-600 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent-600 transition-colors hover:bg-accent-600 hover:text-slate-950"
           >
-            View all projects →
+            See all projects →
           </Link>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

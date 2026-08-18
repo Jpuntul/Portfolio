@@ -24,3 +24,11 @@ export const TECH_DISPLAY_LIMIT = {
 export const TYPEWRITER_SPEED = 100;
 
 export const FORM_TIMEOUT = 5000;
+
+/** Fade + rise once, first time a snap section scrolls into view. */
+export const SECTION_REVEAL = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.3 },
+  transition: { duration: 0.6, ease: "easeOut" },
+} as const;

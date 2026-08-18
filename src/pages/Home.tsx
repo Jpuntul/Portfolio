@@ -1,9 +1,14 @@
 import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
+import Experience from "../components/sections/Experience";
 import Projects from "../components/sections/Projects";
 import Skills from "../components/sections/Skills";
+import Contact from "../components/sections/Contact";
 import { usePageMeta } from "../hooks/usePageMeta";
+
+const SECTION_COUNT = 6;
 
 export default function Home() {
   usePageMeta({
@@ -13,6 +18,7 @@ export default function Home() {
   });
 
   const mainRef = useRef<HTMLElement>(null);
+  const location = useLocation();
 
   // Section dot indicators
   const dotsRef = useRef<HTMLDivElement>(null);
@@ -44,6 +50,13 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // Deep-links (nav clicks, old /about and /contact bookmarks) land on the right section.
+  useEffect(() => {
+    if (!location.hash) return;
+    const el = document.getElementById(location.hash.slice(1));
+    el?.scrollIntoView({ block: "start" });
+  }, [location.hash]);
+
   return (
     <>
       {/* Dot nav — fixed to viewport */}
@@ -52,7 +65,7 @@ export default function Home() {
         className="fixed right-6 top-1/2 z-40 -translate-y-1/2 hidden md:flex flex-col gap-2"
         aria-hidden="true"
       >
-        {[0, 1, 2, 3].map((i) => (
+        {Array.from({ length: SECTION_COUNT }, (_, i) => (
           <span
             key={i}
             data-dot
@@ -70,8 +83,10 @@ export default function Home() {
       >
         <Hero />
         <About />
+        <Experience />
         <Projects />
         <Skills />
+        <Contact />
       </main>
     </>
   );

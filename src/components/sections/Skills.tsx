@@ -1,7 +1,9 @@
 import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
 import { skills, personalInfo } from "../../data/portfolio";
 import type { SkillLevel } from "../../data/portfolio";
+import { SECTION_REVEAL } from "../../constants/ui";
 
 const SHOW = ["Languages", "Frameworks", "Databases", "Tools & Cloud"];
 
@@ -21,13 +23,13 @@ export default function Skills() {
       className="flex h-screen flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 py-16 md:px-16"
       style={{ scrollSnapAlign: "start" }}
     >
-      <div className="mx-auto w-full max-w-5xl">
+      <motion.div {...SECTION_REVEAL} className="mx-auto w-full max-w-5xl">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Left — stack */}
           <div className="flex flex-col gap-6">
             <div>
               <p className="mb-1 text-[80px] font-black leading-none tracking-tighter text-slate-900 select-none">
-                03
+                04
               </p>
               <h2 className="text-3xl font-bold tracking-tight text-slate-100 md:text-4xl">
                 Stack
@@ -150,7 +152,7 @@ export default function Skills() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

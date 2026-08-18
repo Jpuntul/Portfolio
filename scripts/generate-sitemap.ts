@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const BASE = "https://jpuntul.github.io/Portfolio";
 const today = new Date().toISOString().slice(0, 10);
 
-const staticRoutes = ["", "/about", "/projects", "/contact"];
+const staticRoutes = ["", "/projects"];
 const projectRoutes = projects.map((p) => `/projects/${p.slug}`);
 const allRoutes = [...staticRoutes, ...projectRoutes];
 

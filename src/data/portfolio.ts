@@ -94,7 +94,7 @@ export const projects: Project[] = [
     problem:
       "Healthcare admins were juggling patient records, staff scheduling, and facility coordination across disconnected tools, with slow queries and no audit-friendly access control.",
     solution:
-      "Team phase in PHP + MySQL (schema, triggers, query optimization). Solo phase: rewrote the full stack to Django REST + React/TypeScript with hybrid auth, role-based permissions, and analytics dashboards.",
+      "Team phase in PHP + MySQL (schema, triggers, query optimization). Solo phase: rewrote the full stack to Django REST + React/TypeScript with JWT auth, role-based permissions (admin, doctor, staff), and analytics dashboards.",
     impact: [
       "Manages 447+ patient records, 303+ staff accounts, and 11+ medical facilities",
       "Team phase: sole PHP developer; co-built MySQL schema, triggers, and query optimizations (75% speedup, 3s → 0.7s)",
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     ],
     architecture: [
       "Team phase: PHP + MySQL (schema, triggers, query optimization)",
-      "Solo rewrite: Django 4.2 + Django REST Framework, token auth, MySQL (prod) / SQLite (dev)",
+      "Solo rewrite: Django 4.2 + Django REST Framework, JWT auth, MySQL (prod) / SQLite (dev)",
       "Frontend: React 19 + TypeScript + Vite + Tailwind CSS + Axios",
       "Tooling: 13 pre-commit hooks, GitHub Actions CI",
     ],
@@ -115,7 +115,7 @@ Team phase (PHP + MySQL):
 - 75% query speedup (3s → 0.7s) via indexing, caching, and schema redesign
 
 Solo rewrite (Django REST + React/TypeScript):
-- Rebuilt the entire backend in Django REST Framework with token auth and role-based access control
+- Rebuilt the entire backend in Django REST Framework with JWT authentication and role-based access control for admin, doctor, and staff workflows
 - Built the React/TypeScript frontend from scratch (replacing PHP templates)
 - Designed 15+ REST API endpoints powering interactive analytics dashboards
 - Manages 447+ patient records, 303+ staff, 11+ medical facilities
@@ -477,7 +477,6 @@ export const skills: SkillCategories = {
     { name: "Java", experience: "Experienced" },
     { name: "Dart", experience: "Experienced" },
     { name: "HTML/CSS", experience: "Proficient" },
-    { name: "C", experience: "Familiar" },
   ],
   Frameworks: [
     { name: "React", experience: "Proficient" },
@@ -499,6 +498,7 @@ export const skills: SkillCategories = {
   "Tools & Cloud": [
     { name: "Git", experience: "Proficient" },
     { name: "GitHub Actions", experience: "Experienced" },
+    { name: "CI/CD", experience: "Experienced" },
     { name: "Docker", experience: "Experienced" },
     { name: "AWS", experience: "Familiar" },
     { name: "WebSockets", experience: "Experienced" },

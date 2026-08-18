@@ -25,19 +25,29 @@ export default function Hero() {
 
       {/* Main name block */}
       <div className="text-center">
-        <h1
-          className="font-extrabold leading-[0.88] tracking-[-0.06em] text-slate-100"
-          style={{ fontSize: "clamp(56px, 11vw, 148px)" }}
-        >
-          JUTI
-          <span className="text-accent-600">PONG</span>
-          <br />
-          PUN
-          <span className="text-accent-600">TU</span>
-          LENG
-        </h1>
+        <div className="relative inline-block px-8 py-6 md:px-14 md:py-8">
+          {/* Outline — draws clockwise once on load, then breathes with a slow glow */}
+          <div aria-hidden="true">
+            <span className="hero-box-top pointer-events-none absolute left-0 top-0 h-px w-full bg-accent-600" />
+            <span className="hero-box-right pointer-events-none absolute right-0 top-0 h-full w-px bg-accent-600" />
+            <span className="hero-box-bottom pointer-events-none absolute bottom-0 left-0 h-px w-full bg-accent-600" />
+            <span className="hero-box-left pointer-events-none absolute left-0 top-0 h-full w-px bg-accent-600" />
+          </div>
 
-        <p className="mt-6 text-sm font-medium uppercase tracking-[0.18em] text-slate-500 md:text-base">
+          <h1
+            className="font-extrabold leading-[0.88] tracking-[-0.06em] text-slate-100"
+            style={{ fontSize: "clamp(56px, 11vw, 148px)" }}
+          >
+            JUTI
+            <span className="text-accent-600">PONG</span>
+            <br />
+            PUN
+            <span className="text-accent-600">TU</span>
+            LENG
+          </h1>
+        </div>
+
+        <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-slate-500 md:text-base">
           Full-Stack Engineer · Backend Systems · Real-time Apps
         </p>
       </div>
