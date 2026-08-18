@@ -5,7 +5,13 @@ import { skills, personalInfo } from "../../data/portfolio";
 import type { SkillLevel } from "../../data/portfolio";
 import { SECTION_REVEAL } from "../../constants/ui";
 
-const SHOW = ["Languages", "Frameworks", "Databases", "Tools & Cloud"];
+const SHOW = [
+  "Languages",
+  "Frameworks",
+  "Databases",
+  "Tools & Cloud",
+  "Automation & No-Code",
+];
 
 const levelDots: Record<SkillLevel, number> = {
   Proficient: 3,
@@ -113,9 +119,9 @@ export default function Skills() {
               Get in touch
             </p>
             <p className="mb-8 text-2xl font-bold leading-tight tracking-tight text-slate-100">
-              Open to full-time roles
+              Open part-time from Sept,
               <br />
-              <span className="text-accent-600">from August 2026.</span>
+              <span className="text-accent-600">full-time from Oct 2026.</span>
             </p>
 
             <a

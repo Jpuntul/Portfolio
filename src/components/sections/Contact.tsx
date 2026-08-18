@@ -69,8 +69,8 @@ export default function Contact() {
               Let&rsquo;s talk
             </h2>
             <p className="mb-8 max-w-md text-sm leading-relaxed text-slate-400">
-              {personalInfo.availability}. Open to full-stack and
-              backend-leaning roles in {personalInfo.location}.
+              {personalInfo.availability}, for full-stack and backend-leaning
+              roles in {personalInfo.location}.
             </p>
 
             <div className="space-y-2 text-sm">

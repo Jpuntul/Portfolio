@@ -63,7 +63,8 @@ export const personalInfo: PersonalInfo = {
   title: "Full-Stack Software Engineer",
   headline:
     "Software Engineer who ships across the full stack — real-time apps, backend systems, and multi-stack rewrites.",
-  availability: "Available for full-time roles from August 2026",
+  availability:
+    "Open to part-time and contract roles from September 2026, full-time from October 2026",
   citizenship: "Thai/Canadian",
   university: "Concordia University",
   graduated: "2026",
@@ -94,11 +95,11 @@ export const projects: Project[] = [
     problem:
       "Healthcare admins were juggling patient records, staff scheduling, and facility coordination across disconnected tools, with slow queries and no audit-friendly access control.",
     solution:
-      "Team phase in PHP + MySQL (schema, triggers, query optimization). Solo phase: rewrote the full stack to Django REST + React/TypeScript with JWT auth, role-based permissions (admin, doctor, staff), and analytics dashboards.",
+      "Team phase (course project, complete): PHP + MySQL schema, triggers, and query optimization. Solo phase (personal side project): rewrote most of the stack to Django REST + React/TypeScript with JWT auth, role-based permissions (admin, doctor, staff), and analytics dashboards.",
     impact: [
       "Manages 447+ patient records, 303+ staff accounts, and 11+ medical facilities",
-      "Team phase: sole PHP developer; co-built MySQL schema, triggers, and query optimizations (75% speedup, 3s → 0.7s)",
-      "Solo phase: rewrote full stack to Django REST + React/TypeScript",
+      "Team phase: sole PHP developer; co-built MySQL schema, triggers, and query optimizations (75% speedup, 3s → 0.7s) — course project, complete",
+      "Solo phase: rewrote most of the stack to Django REST + React/TypeScript, as personal side work",
       "Designed 15+ REST API endpoints powering interactive data analytics dashboards",
       "Enforced quality with 13 pre-commit hooks (flake8, isort, ESLint, TypeScript, Prettier, Black)",
     ],
@@ -110,12 +111,12 @@ export const projects: Project[] = [
     ],
     description: `Full-stack healthcare platform with two phases.
 
-Team phase (PHP + MySQL):
+Team phase (PHP + MySQL) — school course project, complete:
 - Sole PHP developer; co-built MySQL schema, triggers, and query optimizations with the team
 - 75% query speedup (3s → 0.7s) via indexing, caching, and schema redesign
 
-Solo rewrite (Django REST + React/TypeScript):
-- Rebuilt the entire backend in Django REST Framework with JWT authentication and role-based access control for admin, doctor, and staff workflows
+Solo rewrite (Django REST + React/TypeScript) — personal side project:
+- Rebuilt the backend in Django REST Framework with JWT authentication and role-based access control for admin, doctor, and staff workflows
 - Built the React/TypeScript frontend from scratch (replacing PHP templates)
 - Designed 15+ REST API endpoints powering interactive analytics dashboards
 - Manages 447+ patient records, 303+ staff, 11+ medical facilities
@@ -133,7 +134,7 @@ Solo rewrite (Django REST + React/TypeScript):
       "Role-Based Access Control",
     ],
     myRole:
-      "Team phase: sole PHP developer; co-built MySQL schema, triggers, and query optimizations. Solo phase: rewrote the full stack to Django REST + React/TypeScript — backend, frontend, auth, REST API, and 13-hook pre-commit pipeline.",
+      "Team phase: sole PHP developer; co-built MySQL schema, triggers, and query optimizations — school course project, complete. Solo phase: rewrote most of the stack to Django REST + React/TypeScript — backend, frontend, auth, REST API, and 13-hook pre-commit pipeline — as a personal side project.",
     highlight: true,
   },
   {
@@ -360,28 +361,28 @@ Key Features:
     role: "Full Stack",
     title: "Hand-in-Hand Auction",
     tagline:
-      "Shipped a charity auction in under a week for non-devs, then rebuilt it solo with Next.js + Supabase.",
+      "Shipped San Fun Group's charity auction in under a week for non-devs, then rebuilt it with Next.js + Supabase.",
     shortDesc:
-      "Finished a non-developer team's HTML + Firebase app under a one-week deadline for a live charity event, then took full ownership and rebuilt the platform solo.",
+      "Finished a non-developer team's HTML + Firebase app under a one-week deadline for San Fun Group's live charity event, then took full ownership and rebuilt the platform.",
     problem:
-      "The Hand-in-Hand Myanmar charity needed a working live-bidding tool for an in-person event. A non-developer team had started with plain HTML + Firebase but couldn't finish it in time.",
+      "San Fun Group needed a working live-bidding tool for the company's Hand-in-Hand charity event. A non-developer team had started with plain HTML + Firebase but couldn't finish it in time.",
     solution:
-      "Stepped in with less than a week to go: finished the HTML + Firebase build and shipped it for the live event. Afterwards, took full ownership and rewrote the platform solo — first to React + Vite + Firestore, then to Next.js + TypeScript + Supabase — for a stable, maintainable long-term foundation.",
+      "As Business Development & Consultant Intern at San Fun Group, stepped in with less than a week to go: finished the HTML + Firebase build and shipped it for the live event. Afterwards, took full ownership and rewrote the platform — first to React + Vite + Firestore, then to Next.js + TypeScript + Supabase — for a stable, maintainable long-term foundation.",
     impact: [
       "Delivered the working HTML + Firebase app for the real live charity event in under one week",
-      "Rewrote solo post-event: React + Vite + Firestore (real-time bidding, admin CRUD, guest auth)",
+      "Rewrote post-event: React + Vite + Firestore (real-time bidding, admin CRUD, guest auth)",
       "Admin dashboard with full CRUD and multi-image upload gallery",
       "Lightweight guest auth — no signup friction for event-day attendees",
       "Further migrated to Next.js + TypeScript + Supabase for long-term stability and new features",
     ],
     architecture: [
       "Event build: HTML + Firebase (finished with the original non-dev team's stack)",
-      "V2 (solo rewrite): React + Vite + Firebase Firestore — real-time snapshot listeners, localStorage guest auth",
+      "V2 (rewrite): React + Vite + Firebase Firestore — real-time snapshot listeners, localStorage guest auth",
       "V3 (current): Next.js + TypeScript + Supabase (PostgreSQL) — App Router, Vercel deployment",
     ],
-    description: `Stepped in to help a non-developer team finish their HTML + Firebase charity auction app with less than a week before the live event. Kept their existing stack, completed the missing pieces, and shipped it in time.
+    description: `Built as part of a Business Development & Consultant Intern role at San Fun Group. Stepped in to help a non-developer team finish their HTML + Firebase charity auction app with less than a week before the company's live Hand-in-Hand charity event. Kept their existing stack, completed the missing pieces, and shipped it in time.
 
-After the event, took full solo ownership and rebuilt the platform from scratch:
+After the event, took full ownership and rebuilt the platform from scratch:
 
 V2 (solo rewrite — React + Vite + Firebase):
 - Real-time Firestore snapshot listeners for instant bid sync
@@ -392,8 +393,7 @@ V2 (solo rewrite — React + Vite + Firebase):
 
 V3 (current — long-term migration):
 - Full rewrite to Next.js + TypeScript + Supabase (PostgreSQL)
-- App Router architecture with server components, deployed on Vercel
-- Planned: full auth, email notifications, payment integration`,
+- App Router architecture with server components, deployed on Vercel`,
     image: "images/projects/hand-in-hand.png",
     technologies: [
       "Next.js",
@@ -406,7 +406,7 @@ V3 (current — long-term migration):
     github: "https://github.com/Jpuntul/hand-in-hand-auction",
     demo: "https://hand-in-hand-auction.vercel.app",
     category: "Web",
-    status: "Ongoing",
+    status: "Completed",
     features: [
       "Live Bidding",
       "Admin CRUD",
@@ -415,7 +415,7 @@ V3 (current — long-term migration):
       "Guest Auth",
     ],
     myRole:
-      "Joined a non-developer team with < 1 week to event day — finished their HTML + Firebase app and shipped it for the live event. Took full solo ownership afterwards: rewrote to React + Vite + Firestore, then migrated again to Next.js + TypeScript + Supabase.",
+      "Business Development & Consultant Intern at San Fun Group (May 2025 – May 2026). Joined a non-developer team with < 1 week to event day — finished their HTML + Firebase app and shipped it for the live event. Took full ownership afterwards: rewrote to React + Vite + Firestore, then migrated again to Next.js + TypeScript + Supabase.",
     highlight: true,
   },
   {
@@ -466,6 +466,28 @@ V3 (current — long-term migration):
       "Automated Linting/Formatting",
     ],
   },
+  {
+    id: 11,
+    slug: "vanasin-residence",
+    role: "Frontend",
+    title: "Vanasin Residence",
+    tagline:
+      "Low-code public website for a Thai wellness resort, built with Softr + Monday.com.",
+    shortDesc:
+      "Public website for Vanasin Residence, a wellness resort in Tak, Thailand, built low-code with Softr and a Monday.com backend.",
+    description: `Public marketing and booking-info website for Vanasin Residence, built as part of a Business Development & Consultant Intern role at San Fun Group.
+
+Built low-code with Softr, using Monday.com as the backend database for content and booking data — no custom backend code.`,
+    image: "images/projects/vanasin-residence.png",
+    technologies: ["Softr", "Monday.com"],
+    github: "",
+    demo: "https://www.vanasinresidence.com",
+    category: "Web",
+    status: "Completed",
+    features: ["Low-Code Build", "Booking Info", "Multi-Section Site"],
+    myRole:
+      "Business Development & Consultant Intern at San Fun Group (May 2025 – May 2026). Designed and built the site independently using Softr with Monday.com as the backend.",
+  },
 ];
 
 export const skills: SkillCategories = {
@@ -512,5 +534,14 @@ export const skills: SkillCategories = {
     { name: "Code Review", experience: "Proficient" },
     { name: "Clean Architecture", experience: "Experienced" },
     { name: "Pre-Commit Hooks", experience: "Proficient" },
+  ],
+  "Automation & No-Code": [
+    { name: "Zapier", experience: "Proficient" },
+    { name: "Make.com", experience: "Proficient" },
+    { name: "n8n", experience: "Proficient" },
+    { name: "Softr", experience: "Proficient" },
+    { name: "Monday.com", experience: "Proficient" },
+    { name: "Claude Skills / Projects", experience: "Proficient" },
+    { name: "LINE API", experience: "Proficient" },
   ],
 };

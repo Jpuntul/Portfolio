@@ -3,9 +3,19 @@ import { SECTION_REVEAL } from "../../constants/ui";
 
 const timeline = [
   {
-    period: "2026",
-    title: "Graduated · B.Eng. Software Engineering",
-    place: "Concordia University, Montréal",
+    period: "Jan 2025 – Apr 2025",
+    title: "Campus Navigation App · Flutter",
+    place: "Concordia University (9-person capstone)",
+  },
+  {
+    period: "May 2025 – May 2026",
+    title: "Business Development & Consultant Intern · San Fun Group",
+    place: "Hand-in-Hand auction rebuild + Vanasin Residence site",
+  },
+  {
+    period: "June 2025 – Present",
+    title: "Healthcare Management System · Full-stack",
+    place: "Course project (team, complete) → personal rewrite",
   },
   {
     period: "Sep 2025 – Apr 2026",
@@ -13,19 +23,24 @@ const timeline = [
     place: "BIXI Montréal + Concordia (11-person team)",
   },
   {
-    period: "May 2025 – Present",
-    title: "Hand-in-Hand Auction · Rescue + solo rebuild",
-    place: "Charity event",
+    period: "May 2026",
+    title: "Graduated · B.Eng. Software Engineering",
+    place: "Concordia University, Montréal",
   },
   {
-    period: "June 2025 – Present",
-    title: "Healthcare Management System · Full-stack",
-    place: "Team (PHP + MySQL) → solo rewrite",
+    period: "Jun 2026 – Jul 2026",
+    title: "Business Development & Consultant · San Fun Group",
+    place: "Automation workflows (Zapier, Make.com, n8n) + internal AI tooling",
   },
   {
-    period: "Jan 2025 – Apr 2025",
-    title: "Campus Navigation App · Flutter",
-    place: "Concordia University (9-person capstone)",
+    period: "Aug 2026 – Present",
+    title: "IT & Systems · San Fun Group",
+    place: "Ongoing IT support and troubleshooting",
+  },
+  {
+    period: "Aug 2026 – Present",
+    title: "Digital Transformation Consultant · Independent, with Teeraporn",
+    place: "Healthcare digital-transformation advisory engagement",
   },
 ];
 

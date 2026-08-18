@@ -9,7 +9,7 @@ const facts = [
     label: "University",
     value: `${personalInfo.university} B.Eng. ${personalInfo.graduated}`,
   },
-  { label: "Available", value: "August 2026", gold: true },
+  { label: "Available", value: "Full-time Oct 2026", gold: true },
   { label: "Focus", value: "Backend-leaning full-stack" },
   { label: "Languages", value: "Thai · English" },
 ];
