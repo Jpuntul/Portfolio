@@ -5,7 +5,9 @@
 [![Live](https://img.shields.io/badge/live-jpuntul.github.io%2FPortfolio-0d9488)](https://jpuntul.github.io/Portfolio/)
 [![Stack](https://img.shields.io/badge/stack-React%2019%20%C2%B7%20TS%20%C2%B7%20Tailwind%20v4%20%C2%B7%20Vite%206-0f766e)](#stack)
 
-Personal portfolio for a full-stack software engineering job search. Showcases shipped projects (Healthcare Management System, VeloSim/BIXI Montreal, Hand-in-Hand Auction, Campus Navigation) with metrics, architecture, and source.
+Personal portfolio for a full-stack software engineering job search. Showcases shipped projects (Healthcare Management System, VeloSim/BIXI Montréal, Hand-in-Hand Auction, Campus Navigation) with impact, architecture, and source.
+
+`/about` and `/contact` are kept as redirects to the `#about` / `#contact` sections on the single-page home route.
 
 **Live:** https://jpuntul.github.io/Portfolio/
 
@@ -31,16 +33,16 @@ Open http://localhost:5173/Portfolio/ — note the `/Portfolio/` basename, set i
 
 ## Scripts
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Vite dev server with HMR |
-| `npm run build` | Typecheck + production build to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | ESLint over `**/*.{js,jsx,ts,tsx}` |
-| `npm run typecheck` | `tsc --noEmit` for full project typecheck |
-| `npm test` | Run the Vitest suite once |
-| `npm run test:watch` | Watch-mode tests |
-| `npm run test:coverage` | Vitest with V8 coverage report |
+| Command                 | What it does                              |
+| ----------------------- | ----------------------------------------- |
+| `npm run dev`           | Vite dev server with HMR                  |
+| `npm run build`         | Typecheck + production build to `dist/`   |
+| `npm run preview`       | Serve the production build locally        |
+| `npm run lint`          | ESLint over `**/*.{js,jsx,ts,tsx}`        |
+| `npm run typecheck`     | `tsc --noEmit` for full project typecheck |
+| `npm test`              | Run the Vitest suite once                 |
+| `npm run test:watch`    | Watch-mode tests                          |
+| `npm run test:coverage` | Vitest with V8 coverage report            |
 
 ## Project structure
 
@@ -53,16 +55,18 @@ src/
 │   └── ui.ts             # Magic-number constants (scroll thresholds, etc.)
 ├── data/
 │   └── portfolio.ts      # Typed source of truth (personalInfo, projects, skills)
-├── pages/                # Home, About, Projects, Contact, NotFound
+├── hooks/                # usePageMeta (per-route title/description)
+├── pages/                # Home, Projects, ProjectDetail, NotFound
 ├── components/
 │   ├── layout/           # Header, Footer
-│   ├── sections/         # Hero, About, Projects, Skills (composed on Home)
+│   ├── sections/         # Hero, About, Experience, Projects, Skills, Contact
+│   │                     #   (all six composed on Home as snap-scroll sections)
 │   └── *.tsx             # Reusable widgets (ProjectCard, BackToTop, etc.)
 └── vite-env.d.ts         # Vite + import.meta.env types
 
 public/
 ├── images/projects/      # Project screenshots
-├── resume.pdf            # Downloadable resume
+├── Jutipong_Puntuleng_resume.pdf   # Downloadable resume (source: docs/resume/)
 └── 404.html              # SPA fallback for GitHub Pages
 ```
 
