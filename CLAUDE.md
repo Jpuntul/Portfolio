@@ -14,15 +14,22 @@ No animation library — see "Reveal system" below.
 ## Commands
 
 ```sh
-npm run dev        # dev server at /Portfolio/
-npm run build      # tsc --noEmit && sitemap && vite build && prerender
-npm run preview    # serve the built site (use this, not dev, to check prerender)
-npm run lint
-npm run typecheck
-npm test
+pnpm install       # pnpm only — pnpm-lock.yaml is the single lockfile
+pnpm run dev       # dev server at /Portfolio/
+pnpm run build     # tsc --noEmit && sitemap && vite build && prerender
+pnpm run preview   # serve the built site (use this, not dev, to check prerender)
+pnpm run lint
+pnpm run typecheck
+pnpm test
 ```
 
-`npm run build` **rewrites the tracked file `public/sitemap.xml`**. That is
+**pnpm, not npm.** `package-lock.json` was deleted — it had drifted out of sync
+and CI was installing a different dependency tree than local dev. `allowBuilds`
+in `pnpm-workspace.yaml` must keep `@swc/core` and `esbuild` set to `true`, or
+`pnpm install --frozen-lockfile` exits 1 with `ERR_PNPM_IGNORED_BUILDS` and CI
+fails before it starts.
+
+`pnpm run build` **rewrites the tracked file `public/sitemap.xml`**. That is
 intended, but it means a build dirties the working tree — don't be surprised when
 `git checkout` refuses afterwards.
 
@@ -111,5 +118,5 @@ and feed `og:image:width`/`height`. See `public/images/projects/README.md`.
 
 ## Before committing
 
-Run the `preflight` skill, or at minimum `npm run lint && npm run typecheck &&
-npm test && npm run build`.
+Run the `preflight` skill, or at minimum `pnpm run lint && pnpm run typecheck &&
+pnpm test && pnpm run build`.

@@ -100,10 +100,10 @@ box (preventing the case study from jumping as the image loads) and feed
 ## 5. Verify
 
 ```sh
-npm test                    # portfolio.test.ts checks slug/id uniqueness, kebab-case,
+pnpm test                    # portfolio.test.ts checks slug/id uniqueness, kebab-case,
                             # featured completeness, private projects have no github
-npm run typecheck
-npm run build               # regenerates the sitemap and prerenders the new route
+pnpm run typecheck
+pnpm run build               # regenerates the sitemap and prerenders the new route
 ```
 
 Then confirm the route actually exists and carries its own metadata:
@@ -126,7 +126,7 @@ Anything printed is unreferenced — delete it.
 
 ## 6. Look at it
 
-`npm run preview`, then open `/Portfolio/projects/` and the new
+`pnpm run preview`, then open `/Portfolio/projects/` and the new
 `/Portfolio/projects/<slug>/`. Check the card image isn't awkwardly cropped
 (`object-cover` at 16/9 on the card) and the case study reads well.
 

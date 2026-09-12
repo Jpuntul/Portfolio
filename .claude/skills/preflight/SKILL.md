@@ -11,10 +11,10 @@ anything broken here is live.
 ## 1. Gates
 
 ```sh
-npm run lint && npm run typecheck && npm test && npm run build
+pnpm run lint && pnpm run typecheck && pnpm test && pnpm run build
 ```
 
-`npm run build` rewrites the tracked `public/sitemap.xml`. That's expected —
+`pnpm run build` rewrites the tracked `public/sitemap.xml`. That's expected —
 commit it, don't revert it.
 
 ## 2. Outbound links
@@ -66,8 +66,8 @@ Anything printed is unreferenced — delete it.
 The whole point is that crawlers get real HTML. Verify rather than assume:
 
 ```sh
-npm run build >/dev/null 2>&1
-npx vite preview --port 4173 &
+pnpm run build >/dev/null 2>&1
+pnpm exec vite preview --port 4173 &
 sleep 5
 for u in "/Portfolio/" "/Portfolio/projects/" "/Portfolio/projects/hms/"; do
   code=$(curl -s -o /tmp/b.html -w "%{http_code}" "http://localhost:4173$u")

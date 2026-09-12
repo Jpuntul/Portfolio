@@ -25,9 +25,11 @@ Personal portfolio for a full-stack software engineering job search. Showcases s
 ```sh
 git clone https://github.com/Jpuntul/Portfolio.git
 cd Portfolio
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
+
+Uses **pnpm** (pinned via the `packageManager` field, so Corepack picks the right version automatically). There is no `package-lock.json` — `pnpm-lock.yaml` is the only lockfile, and CI installs from it with `--frozen-lockfile`.
 
 Open http://localhost:5173/Portfolio/ — note the `/Portfolio/` basename, set in [vite.config.ts](vite.config.ts) and [src/App.tsx](src/App.tsx) so it matches the GitHub Pages path.
 
@@ -35,14 +37,14 @@ Open http://localhost:5173/Portfolio/ — note the `/Portfolio/` basename, set i
 
 | Command                 | What it does                              |
 | ----------------------- | ----------------------------------------- |
-| `npm run dev`           | Vite dev server with HMR                  |
-| `npm run build`         | Typecheck + production build to `dist/`   |
-| `npm run preview`       | Serve the production build locally        |
-| `npm run lint`          | ESLint over `**/*.{js,jsx,ts,tsx}`        |
-| `npm run typecheck`     | `tsc --noEmit` for full project typecheck |
-| `npm test`              | Run the Vitest suite once                 |
-| `npm run test:watch`    | Watch-mode tests                          |
-| `npm run test:coverage` | Vitest with V8 coverage report            |
+| `pnpm run dev`           | Vite dev server with HMR                  |
+| `pnpm run build`         | Typecheck, sitemap, build, then pre-render routes   |
+| `pnpm run preview`       | Serve the production build locally        |
+| `pnpm run lint`          | ESLint over `**/*.{js,jsx,ts,tsx}`        |
+| `pnpm run typecheck`     | `tsc --noEmit` for full project typecheck |
+| `pnpm test`              | Run the Vitest suite once                 |
+| `pnpm run test:watch`    | Watch-mode tests                          |
+| `pnpm run test:coverage` | Vitest with V8 coverage report            |
 
 ## Project structure
 

@@ -1,3 +1,8 @@
+# @swc/core and esbuild ship native binaries and need their install scripts to
+# run. pnpm blocks build scripts by default, so without these
+# `pnpm install --frozen-lockfile` exits 1 with ERR_PNPM_IGNORED_BUILDS.
+# These were left as unfilled placeholders ("set this to true or false"), which
+# only went unnoticed because CI was installing with npm.
 allowBuilds:
-  '@swc/core': set this to true or false
-  esbuild: set this to true or false
+  '@swc/core': true
+  esbuild: true
