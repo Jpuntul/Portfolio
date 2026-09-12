@@ -1,23 +1,27 @@
-# Project Screenshot Placeholders
+# Project screenshots
 
-This directory contains placeholder images for your portfolio projects.
+Served as **WebP**, max 1536px wide (quality 82) — that width covers the
+case-study page at 2× DPR, and the grid cards downscale from it.
 
-## To replace with real screenshots:
+The originals were 6.2 MB of PNG for the same ten images; the WebP set is 445 KB.
+They are not kept here — recover any of them from git if you need to re-derive a
+different size:
 
-1. **project1-screenshot.png** - E-Commerce Platform
-   - Recommended size: 1200x800px
-   - Show the main dashboard/product page
+```sh
+git show <commit-before-conversion>:public/images/projects/hms.png > hms.png
+```
 
-2. **project2-screenshot.png** - Task Management App  
-   - Recommended size: 1200x800px
-   - Show the app interface/task list
+## Adding a new screenshot
 
-3. **project3-screenshot.png** - Weather ML Model
-   - Recommended size: 1200x800px
-   - Show charts/predictions interface
+```sh
+python3 -c "
+from PIL import Image
+im = Image.open('new.png')
+w, h = im.size
+if w > 1536: im = im.resize((1536, round(h*1536/w)), Image.LANCZOS)
+im.convert('RGB').save('new.webp', 'WEBP', quality=82, method=6)"
+```
 
-## Tips for great screenshots:
-- Use clean, well-lit interfaces
-- Show actual data/content (not lorem ipsum)
-- Include multiple UI elements
-- Consider using tools like Cleanshot X or similar for professional screenshots
+Then add it to `src/data/portfolio.ts` with `image`, `imageWidth` and
+`imageHeight` — the last two reserve the layout box and prevent the case-study
+page from jumping as the image loads.

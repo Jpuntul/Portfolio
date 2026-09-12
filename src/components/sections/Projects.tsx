@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { projects } from "../../data/portfolio";
-import { SECTION_REVEAL } from "../../constants/ui";
 
 const featured = projects.filter((p) => p.highlight);
 
@@ -10,14 +8,16 @@ export default function Projects() {
     <section
       id="projects"
       data-snap-section
-      className="flex h-screen flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 py-16 md:px-16"
-      style={{ scrollSnapAlign: "start" }}
+      className="snap-start flex min-h-dvh flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 pb-16 pt-24 md:px-16 md:py-16"
     >
-      <motion.div {...SECTION_REVEAL} className="mx-auto w-full max-w-5xl">
+      <div data-reveal className="mx-auto w-full max-w-5xl">
         {/* Header row */}
         <div className="mb-0 flex items-end justify-between">
           <div>
-            <p className="mb-1 text-[80px] font-black leading-none tracking-tighter text-slate-900 select-none">
+            <p
+              className="mb-1 text-[80px] font-bold leading-none tracking-tighter text-slate-900 select-none"
+              aria-hidden="true"
+            >
               03
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-100 md:text-4xl">
@@ -33,7 +33,7 @@ export default function Projects() {
         </div>
 
         {/* Column labels */}
-        <div className="mt-6 grid grid-cols-[48px_1fr_200px_140px] gap-4 border-b border-slate-800 pb-3 text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-500">
+        <div className="mt-6 grid grid-cols-[48px_1fr_200px_140px] gap-4 border-b border-slate-800 pb-3 text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">
           <span>#</span>
           <span>Project</span>
           <span className="hidden md:block">Description</span>
@@ -47,7 +47,7 @@ export default function Projects() {
             to={`/projects/${project.slug}`}
             className="group grid grid-cols-[48px_1fr] gap-4 border-b border-slate-800 py-5 transition-colors md:grid-cols-[48px_1fr_200px_140px]"
           >
-            <span className="pt-0.5 text-xs font-medium tabular-nums text-slate-500">
+            <span className="pt-0.5 text-xs font-medium tabular-nums text-slate-400">
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>
@@ -65,7 +65,7 @@ export default function Projects() {
               {project.technologies.slice(0, 3).map((t) => (
                 <span
                   key={t}
-                  className="border border-slate-800 px-2 py-0.5 text-[10px] text-slate-500"
+                  className="border border-slate-800 px-2 py-0.5 text-[10px] text-slate-400"
                 >
                   {t}
                 </span>
@@ -82,7 +82,7 @@ export default function Projects() {
             See all projects →
           </Link>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

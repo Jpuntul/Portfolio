@@ -1,6 +1,4 @@
-import { motion } from "framer-motion";
 import { personalInfo } from "../../data/portfolio";
-import { SECTION_REVEAL } from "../../constants/ui";
 
 const facts = [
   { label: "Location", value: personalInfo.location },
@@ -9,9 +7,12 @@ const facts = [
     label: "University",
     value: `${personalInfo.university} B.Eng. ${personalInfo.graduated}`,
   },
-  { label: "Available", value: "Full-time Oct 2026", gold: true },
+  { label: "Open to", value: "Remote · Bangkok", gold: true },
   { label: "Focus", value: "Backend-leaning full-stack" },
-  { label: "Languages", value: "Thai · English" },
+  {
+    label: "Languages",
+    value: personalInfo.languagesSpoken.map((l) => l.name).join(" · "),
+  },
 ];
 
 export default function About() {
@@ -19,16 +20,18 @@ export default function About() {
     <section
       id="about"
       data-snap-section
-      className="flex h-screen flex-col justify-center border-t border-slate-800 bg-slate-950"
-      style={{ scrollSnapAlign: "start" }}
+      className="snap-start flex min-h-dvh flex-col justify-center border-t border-slate-800 bg-slate-950"
     >
-      <motion.div
-        {...SECTION_REVEAL}
-        className="grid h-full grid-cols-1 lg:grid-cols-2"
+      <div
+        data-reveal
+        className="grid w-full flex-1 grid-cols-1 lg:grid-cols-2"
       >
         {/* Left */}
-        <div className="flex flex-col justify-center border-b border-slate-800 px-8 py-16 lg:border-b-0 lg:border-r lg:px-16">
-          <p className="mb-1 text-[80px] font-black leading-none tracking-tighter text-slate-900 select-none">
+        <div className="flex flex-col justify-center border-b border-slate-800 px-8 pb-16 pt-24 lg:border-b-0 lg:border-r lg:px-16 lg:py-16">
+          <p
+            className="mb-1 text-[80px] font-bold leading-none tracking-tighter text-slate-900 select-none"
+            aria-hidden="true"
+          >
             01
           </p>
           <h2 className="mb-6 text-3xl font-bold tracking-tight text-slate-100 md:text-4xl">
@@ -40,15 +43,16 @@ export default function About() {
             stack — from database schema to React UI.
           </p>
           <p className="mt-4 max-w-md text-base leading-relaxed text-slate-400">
-            Strongest work: Healthcare Management System (447+ patients, 75%
-            query speedup), Hand-in-Hand real-time charity auction on Firestore,
-            and the SOEN-390 Flutter campus navigation capstone.
+            Strongest work: Hand-in-Hand, a live charity-auction platform
+            shipped under a one-week deadline and rewritten twice; VeloSim, a
+            bike-network simulator built with BIXI Montréal; and a healthcare
+            platform rebuilt from PHP to Django REST + React.
           </p>
           <a
             href={`${import.meta.env.BASE_URL}Jutipong_Puntuleng_resume.pdf`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex w-fit items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-accent-600"
+            className="mt-6 inline-flex w-fit items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-slate-400 transition-colors hover:text-accent-600"
           >
             Résumé (PDF) →
           </a>
@@ -61,7 +65,7 @@ export default function About() {
               key={label}
               className="border-b border-r border-slate-800 px-4 py-5 nth-[2n]:border-r-0"
             >
-              <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+              <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                 {label}
               </p>
               <p
@@ -72,7 +76,7 @@ export default function About() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

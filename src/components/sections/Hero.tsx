@@ -6,8 +6,7 @@ export default function Hero() {
     <section
       id="hero"
       data-snap-section
-      className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-slate-950"
-      style={{ scrollSnapAlign: "start" }}
+      className="snap-start relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-slate-950"
     >
       {/* Corner — top left */}
       <div className="absolute left-6 top-20 text-[11px] leading-relaxed text-slate-400 md:left-12 md:top-24">
@@ -35,7 +34,7 @@ export default function Hero() {
           </div>
 
           <h1
-            className="font-extrabold leading-[0.88] tracking-[-0.06em] text-slate-100"
+            className="font-bold leading-[0.88] tracking-[-0.06em] text-slate-100"
             style={{ fontSize: "clamp(56px, 11vw, 148px)" }}
           >
             JUTI
@@ -47,8 +46,11 @@ export default function Hero() {
           </h1>
         </div>
 
-        <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-slate-500 md:text-base">
+        <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-slate-400 md:text-base">
           Full-Stack Engineer · Backend Systems · Real-time Apps
+        </p>
+        <p className="mx-auto mt-5 max-w-xl px-6 text-sm leading-relaxed text-slate-300 md:text-base">
+          {personalInfo.headline}
         </p>
       </div>
 
@@ -59,12 +61,12 @@ export default function Hero() {
             className="block h-1.5 w-1.5 rounded-full bg-accent-600"
             style={{ boxShadow: "0 0 6px #f8c000" }}
           />
-          {personalInfo.availability}
+          {personalInfo.openTo}
         </div>
 
         <Link
           to="/projects"
-          className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-500 transition-colors hover:text-accent-600"
+          className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-400 transition-colors hover:text-accent-600"
         >
           View work ↓
         </Link>

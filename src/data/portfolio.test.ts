@@ -1,19 +1,26 @@
 import { describe, expect, it } from "vitest";
-import { personalInfo, projects, skills } from "./portfolio";
+import {
+  personalInfo,
+  projects,
+  skills,
+  skillCategoryOrder,
+} from "./portfolio";
 
 describe("personalInfo", () => {
   it("has every required field", () => {
     expect(personalInfo.name).toBeTruthy();
     expect(personalInfo.title).toBeTruthy();
     expect(personalInfo.headline).toBeTruthy();
-    expect(personalInfo.availability).toBeTruthy();
+    expect(personalInfo.openTo).toBeTruthy();
     expect(personalInfo.email).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
     expect(personalInfo.github).toMatch(/^https:\/\/github\.com\//);
     expect(personalInfo.linkedin).toMatch(/^https:\/\/(www\.)?linkedin\.com\//);
   });
 
-  it("frames availability with 'from' (not a fixed date) so it survives slips", () => {
-    expect(personalInfo.availability.toLowerCase()).toMatch(/from/);
+  it("states no start date anywhere — those go stale silently", () => {
+    const months =
+      /january|february|march|april|may|june|july|august|september|october|november|december/i;
+    expect(personalInfo.openTo).not.toMatch(months);
   });
 });
 
@@ -91,6 +98,18 @@ describe("skills", () => {
     for (const [, list] of Object.entries(skills)) {
       const names = list.map((s) => s.name.toLowerCase());
       expect(new Set(names).size).toBe(names.length);
+    }
+  });
+});
+
+describe("skills categories", () => {
+  it("every category the Skills section renders exists in the data", () => {
+    for (const category of skillCategoryOrder) {
+      expect(skills[category], `missing skills category: ${category}`).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ name: expect.any(String) }),
+        ]),
+      );
     }
   });
 });

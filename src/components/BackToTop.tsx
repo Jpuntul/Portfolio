@@ -18,9 +18,11 @@ export default function BackToTop() {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
-      className={`fixed bottom-6 right-6 z-40 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent-600 text-white shadow-lg transition-opacity duration-200 hover:bg-accent-700 ${
+      className={`fixed bottom-6 right-6 z-40 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent-600 text-slate-950 shadow-lg transition-opacity duration-200 hover:bg-accent-700 ${
         visible ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
+      tabIndex={visible ? 0 : -1}
+      aria-hidden={!visible}
     >
       <ArrowUp className="h-4 w-4" />
     </button>

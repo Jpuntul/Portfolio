@@ -6,7 +6,6 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import { MotionConfig } from "framer-motion";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import BackToTop from "./components/BackToTop";
@@ -32,7 +31,7 @@ function Layout() {
   const isHome = location.pathname === "/";
 
   return (
-    <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
       <Header />
       <div className={isHome ? "flex-1 overflow-hidden" : "flex-1"}>
         <Suspense fallback={<PageFallback />}>
@@ -57,10 +56,8 @@ function Layout() {
 
 export default function App() {
   return (
-    <MotionConfig reducedMotion="user">
-      <Router basename="/Portfolio">
-        <Layout />
-      </Router>
-    </MotionConfig>
+    <Router basename="/Portfolio">
+      <Layout />
+    </Router>
   );
 }

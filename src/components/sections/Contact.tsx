@@ -1,10 +1,9 @@
-import { type FormEvent, useState } from "react";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { personalInfo } from "../../data/portfolio";
-import { FORM_TIMEOUT, SECTION_REVEAL } from "../../constants/ui";
+import { FORM_TIMEOUT } from "../../constants/ui";
 
 type Status = "" | "submitting" | "success" | "error";
 
@@ -19,9 +18,19 @@ const initialForm: FormState = { name: "", email: "", message: "" };
 export default function Contact() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [status, setStatus] = useState<Status>("");
+  const clearStatusTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
+
+  // A pending "clear the banner" timer must not outlive the component (React 19
+  // swallows the resulting setState-after-unmount rather than warning, so this
+  // was a silent leak, not a crash) and must not fire after a newer submit has
+  // already reset it.
+  useEffect(() => () => clearTimeout(clearStatusTimeout.current), []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    clearTimeout(clearStatusTimeout.current);
     setStatus("submitting");
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -47,7 +56,10 @@ export default function Contact() {
       if (import.meta.env.DEV) console.error("EmailJS Error:", error);
       setStatus("error");
     } finally {
-      setTimeout(() => setStatus(""), FORM_TIMEOUT);
+      clearStatusTimeout.current = setTimeout(
+        () => setStatus(""),
+        FORM_TIMEOUT,
+      );
     }
   };
 
@@ -55,22 +67,24 @@ export default function Contact() {
     <section
       id="contact"
       data-snap-section
-      className="flex h-screen flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 py-16 md:px-16"
-      style={{ scrollSnapAlign: "start" }}
+      className="snap-start flex min-h-dvh flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 pb-16 pt-24 md:px-16 md:py-16"
     >
-      <motion.div {...SECTION_REVEAL} className="mx-auto w-full max-w-5xl">
+      <div data-reveal className="mx-auto w-full max-w-5xl">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Left */}
           <div className="flex flex-col justify-center">
-            <p className="mb-1 text-[80px] font-black leading-none tracking-tighter text-slate-900 select-none">
+            <p
+              className="mb-1 text-[80px] font-bold leading-none tracking-tighter text-slate-900 select-none"
+              aria-hidden="true"
+            >
               05
             </p>
             <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-100 md:text-4xl">
               Let&rsquo;s talk
             </h2>
             <p className="mb-8 max-w-md text-sm leading-relaxed text-slate-400">
-              {personalInfo.availability}, for full-stack and backend-leaning
-              roles in {personalInfo.location}.
+              Looking for full-stack and backend-leaning roles —{" "}
+              {personalInfo.openTo.toLowerCase()}.
             </p>
 
             <div className="space-y-2 text-sm">
@@ -80,13 +94,6 @@ export default function Contact() {
               >
                 <Mail className="h-4 w-4 text-slate-600" />
                 {personalInfo.email}
-              </a>
-              <a
-                href={`tel:${personalInfo.phone.replace(/\D/g, "")}`}
-                className="flex items-center gap-2 text-slate-300 transition-colors hover:text-accent-600"
-              >
-                <Phone className="h-4 w-4 text-slate-600" />
-                {personalInfo.phone}
               </a>
               <span className="flex items-center gap-2 text-slate-300">
                 <MapPin className="h-4 w-4 text-slate-600" />
@@ -100,7 +107,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="text-slate-500 transition-colors hover:text-accent-600"
+                className="text-slate-400 transition-colors hover:text-accent-600"
               >
                 <FaGithub className="h-5 w-5" />
               </a>
@@ -109,7 +116,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-slate-500 transition-colors hover:text-accent-600"
+                className="text-slate-400 transition-colors hover:text-accent-600"
               >
                 <FaLinkedin className="h-5 w-5" />
               </a>
@@ -184,7 +191,7 @@ export default function Contact() {
             </button>
           </form>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -214,7 +221,7 @@ function Field({
     <div>
       <label
         htmlFor={id}
-        className="mb-1 block text-[11px] font-medium uppercase tracking-wider text-slate-500"
+        className="mb-1 block text-[11px] font-medium uppercase tracking-wider text-slate-400"
       >
         {label}
       </label>

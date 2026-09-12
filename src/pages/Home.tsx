@@ -8,7 +8,8 @@ import Skills from "../components/sections/Skills";
 import Contact from "../components/sections/Contact";
 import { usePageMeta } from "../hooks/usePageMeta";
 
-const SECTION_COUNT = 6;
+// One list drives both the sections and the dot rail, so they cannot drift.
+const SECTIONS = [Hero, About, Experience, Projects, Skills, Contact];
 
 export default function Home() {
   usePageMeta({
@@ -32,22 +33,44 @@ export default function Home() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           if (entry.isIntersecting) {
-            const idx = Array.from(sections).indexOf(
-              entry.target as HTMLElement,
-            );
-            dots?.forEach((dot, i) => {
-              dot.style.background = i === idx ? "#f8c000" : "#0c1428";
-            });
+            entry.target.querySelector("[data-reveal]")?.classList.add("in");
           }
+        }
+
+        // A fast flick can batch several transitions into one callback, and
+        // entries have no ordering guarantee — pick the most-visible section
+        // rather than letting whichever came last win.
+        const active = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!active) return;
+
+        const idx = Array.prototype.indexOf.call(sections, active.target);
+        dots?.forEach((dot, i) => {
+          dot.classList.toggle("bg-accent-600", i === idx);
+          dot.classList.toggle("bg-slate-500", i !== idx);
         });
       },
-      { root: main, threshold: 0.5 },
+      // The 0 entry matters: a section taller than ~6.67x the container never
+      // reaches 0.15, and a reveal that depends on a threshold the element
+      // cannot reach is a blank screen. 0 fires on any intersection at all.
+      { root: main, threshold: [0, 0.15, 0.5] },
     );
 
     sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+
+    // Opt in to the hidden-then-reveal treatment only once the observer exists
+    // and is watching. Sections are readable by default, so no-JS, a missing
+    // IntersectionObserver, or a throw above all degrade to "visible" rather
+    // than "blank" — which only holds if this runs last.
+    main.classList.add("js-reveal");
+
+    return () => {
+      observer.disconnect();
+      main.classList.remove("js-reveal");
+    };
   }, []);
 
   // Deep-links (nav clicks, old /about and /contact bookmarks) land on the right section.
@@ -65,12 +88,13 @@ export default function Home() {
         className="fixed right-6 top-1/2 z-40 -translate-y-1/2 hidden md:flex flex-col gap-2"
         aria-hidden="true"
       >
-        {Array.from({ length: SECTION_COUNT }, (_, i) => (
+        {SECTIONS.map((_, i) => (
           <span
             key={i}
             data-dot
-            style={{ background: i === 0 ? "#f8c000" : "#0c1428" }}
-            className="block h-1.5 w-1.5 rounded-full transition-all duration-300"
+            className={`block h-1.5 w-1.5 rounded-full transition-colors duration-300 ${
+              i === 0 ? "bg-accent-600" : "bg-slate-500"
+            }`}
           />
         ))}
       </div>
@@ -78,15 +102,15 @@ export default function Home() {
       <main
         id="main"
         ref={mainRef}
-        className="h-screen overflow-y-scroll"
-        style={{ scrollSnapType: "y mandatory" }}
+        // The skip link targets this. Without tabIndex it only moves the
+        // sequential-navigation start point, and browsers disagree about whether
+        // a scroll container is focusable at all.
+        tabIndex={-1}
+        className="h-dvh snap-y snap-proximity overflow-y-scroll focus:outline-none md:snap-mandatory"
       >
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
+        {SECTIONS.map((Section, i) => (
+          <Section key={i} />
+        ))}
       </main>
     </>
   );

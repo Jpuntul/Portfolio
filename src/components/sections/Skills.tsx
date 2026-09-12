@@ -1,17 +1,7 @@
 import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { skills, personalInfo } from "../../data/portfolio";
+import { skills, personalInfo, skillCategoryOrder } from "../../data/portfolio";
 import type { SkillLevel } from "../../data/portfolio";
-import { SECTION_REVEAL } from "../../constants/ui";
-
-const SHOW = [
-  "Languages",
-  "Frameworks",
-  "Databases",
-  "Tools & Cloud",
-  "Automation & No-Code",
-];
 
 const levelDots: Record<SkillLevel, number> = {
   Proficient: 3,
@@ -20,21 +10,25 @@ const levelDots: Record<SkillLevel, number> = {
 };
 
 export default function Skills() {
-  const filtered = Object.entries(skills).filter(([cat]) => SHOW.includes(cat));
+  const filtered = skillCategoryOrder
+    .map((cat) => [cat, skills[cat]] as const)
+    .filter(([, list]) => list?.length);
 
   return (
     <section
       id="skills"
       data-snap-section
-      className="flex h-screen flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 py-16 md:px-16"
-      style={{ scrollSnapAlign: "start" }}
+      className="snap-start flex min-h-dvh flex-col justify-center border-t border-slate-800 bg-slate-950 px-8 pb-16 pt-24 md:px-16 md:py-16"
     >
-      <motion.div {...SECTION_REVEAL} className="mx-auto w-full max-w-5xl">
+      <div data-reveal className="mx-auto w-full max-w-5xl">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Left — stack */}
           <div className="flex flex-col gap-6">
             <div>
-              <p className="mb-1 text-[80px] font-black leading-none tracking-tighter text-slate-900 select-none">
+              <p
+                className="mb-1 text-[80px] font-bold leading-none tracking-tighter text-slate-900 select-none"
+                aria-hidden="true"
+              >
                 04
               </p>
               <h2 className="text-3xl font-bold tracking-tight text-slate-100 md:text-4xl">
@@ -57,7 +51,7 @@ export default function Skills() {
                           className={`block h-1.5 w-1.5 rounded-full ${
                             i < levelDots[lvl]
                               ? "bg-accent-600"
-                              : "bg-slate-800"
+                              : "bg-slate-600"
                           }`}
                         />
                       ))}
@@ -75,7 +69,7 @@ export default function Skills() {
                   key={category}
                   className="grid grid-cols-[96px_1fr] gap-3 items-start"
                 >
-                  <p className="pt-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  <p className="pt-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                     {category}
                   </p>
                   <div className="flex flex-wrap gap-x-4 gap-y-1.5">
@@ -91,7 +85,7 @@ export default function Skills() {
                               className={`block h-1 w-1 rounded-full ${
                                 i < levelDots[skill.experience]
                                   ? "bg-accent-600"
-                                  : "bg-slate-800"
+                                  : "bg-slate-600"
                               }`}
                             />
                           ))}
@@ -115,13 +109,13 @@ export default function Skills() {
 
           {/* Right — contact */}
           <div className="flex flex-col justify-center border-t border-slate-800 pt-10 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-            <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+            <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">
               Get in touch
             </p>
             <p className="mb-8 text-2xl font-bold leading-tight tracking-tight text-slate-100">
-              Open part-time from Sept,
+              Looking for backend-leaning
               <br />
-              <span className="text-accent-600">full-time from Oct 2026.</span>
+              <span className="text-accent-600">full-stack roles.</span>
             </p>
 
             <a
@@ -138,7 +132,7 @@ export default function Skills() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="text-slate-500 transition-colors hover:text-accent-600"
+                className="text-slate-400 transition-colors hover:text-accent-600"
               >
                 <FaGithub className="h-5 w-5" />
               </a>
@@ -147,18 +141,18 @@ export default function Skills() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-slate-500 transition-colors hover:text-accent-600"
+                className="text-slate-400 transition-colors hover:text-accent-600"
               >
                 <FaLinkedin className="h-5 w-5" />
               </a>
             </div>
 
-            <p className="mt-10 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-700">
+            <p className="mt-10 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-400">
               Built with React · TypeScript · Vite · Tailwind v4
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

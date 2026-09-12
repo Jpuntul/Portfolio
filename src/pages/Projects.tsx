@@ -47,19 +47,19 @@ export default function Projects() {
   };
 
   return (
-    <main id="main">
+    <main id="main" tabIndex={-1} className="focus:outline-none">
       <section className="relative isolate overflow-hidden pt-32 pb-12">
         <div className="absolute inset-0 -z-10 grid-bg opacity-50" />
-        <div className="absolute inset-x-0 top-0 -z-10 h-[40vh] bg-gradient-to-b from-accent-50/60 to-transparent dark:from-accent-900/10" />
+        <div className="absolute inset-x-0 top-0 -z-10 h-[40vh] bg-gradient-to-b from-accent-900/10 to-transparent" />
 
         <div className="mx-auto max-w-6xl px-6">
-          <p className="mb-2 font-mono text-sm font-medium uppercase tracking-wider text-accent-700 dark:text-accent-400">
+          <p className="mb-2 font-mono text-sm font-medium uppercase tracking-wider text-accent-400">
             Projects
           </p>
-          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             Everything I&rsquo;ve shipped
           </h1>
-          <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-300">
+          <p className="mt-4 max-w-2xl text-slate-300">
             {projects.length} projects across full-stack web, real-time systems,
             and cross-platform mobile. Filter to narrow down, or open a card for
             the case study.
@@ -67,7 +67,7 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 py-8 dark:border-slate-800">
+      <section className="border-t border-slate-800 py-8">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="flex flex-wrap gap-3">
@@ -99,24 +99,22 @@ export default function Projects() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search projects, tech…"
-                className="w-full rounded-full border border-slate-200 bg-white py-2 pl-9 pr-4 text-sm text-slate-700 placeholder-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                className="w-full rounded-full border border-slate-700 bg-slate-900 py-2 pl-9 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
               />
             </label>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-slate-50 py-16 dark:border-slate-800 dark:bg-slate-950">
+      <section className="border-t border-slate-800 bg-slate-950 py-16">
         <div className="mx-auto max-w-6xl px-6">
           {filtered.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-slate-300 p-10 text-center dark:border-slate-700">
-              <p className="text-slate-600 dark:text-slate-300">
-                No projects match these filters.
-              </p>
+            <div className="rounded-xl border border-dashed border-slate-700 p-10 text-center">
+              <p className="text-slate-300">No projects match these filters.</p>
               <button
                 type="button"
                 onClick={reset}
-                className="mt-4 rounded-full bg-accent-600 px-4 py-2 text-sm font-medium text-white hover:bg-accent-700"
+                className="mt-4 rounded-full bg-accent-600 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-accent-700"
               >
                 Reset filters
               </button>
@@ -149,10 +147,10 @@ function FilterGroup<T extends string>({
 }: FilterGroupProps<T>) {
   return (
     <div className="flex flex-col gap-1.5">
-      <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">
+      <span className="font-mono text-[10px] uppercase tracking-wider text-slate-400">
         {label}
       </span>
-      <div className="inline-flex flex-wrap gap-1 rounded-full border border-slate-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-900">
+      <div className="inline-flex flex-wrap gap-1 rounded-full border border-slate-700 bg-slate-900 p-1">
         {options.map((option) => (
           <button
             key={option}
@@ -160,8 +158,8 @@ function FilterGroup<T extends string>({
             onClick={() => onChange(option)}
             className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
               value === option
-                ? "bg-accent-600 text-white"
-                : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+                ? "bg-accent-600 text-slate-950"
+                : "text-slate-300 hover:text-white"
             }`}
           >
             {option === "all" ? "All" : option}

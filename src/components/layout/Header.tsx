@@ -2,22 +2,22 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
+// The desktop nav only ever links to in-page anchors (the dot rail is the real
+// section nav there), so it renders plain <Link>s — no item is ever a route.
 const navigation = [
-  { name: "About", path: "/#about", isRoute: false },
-  { name: "Experience", path: "/#experience", isRoute: false },
-  { name: "Projects", path: "/#projects", isRoute: false },
-  { name: "Skills", path: "/#skills", isRoute: false },
-  { name: "Contact", path: "/#contact", isRoute: false },
+  { name: "About", path: "/#about" },
+  { name: "Experience", path: "/#experience" },
+  { name: "Projects", path: "/#projects" },
+  { name: "Skills", path: "/#skills" },
+  { name: "Contact", path: "/#contact" },
 ] as const;
 
-// Mobile has no dot nav to jump between sections, so its menu covers all of them.
-const mobileNavigation = [
-  { name: "About", path: "/#about", isRoute: false },
-  { name: "Experience", path: "/#experience", isRoute: false },
-  { name: "Projects", path: "/projects", isRoute: true },
-  { name: "Skills", path: "/#skills", isRoute: false },
-  { name: "Contact", path: "/#contact", isRoute: false },
-] as const;
+// Mobile has no dot nav to jump between sections, so its menu covers all of
+// them plus a real route to /projects — the one entry that needs <NavLink>'s
+// active-state styling rather than a plain in-page anchor.
+const mobileNavigation = navigation.map((item) =>
+  item.name === "Projects" ? { name: "Projects", path: "/projects" } : item,
+);
 
 const desktopClass = (isActive: boolean) =>
   `px-4 py-1.5 text-sm font-medium transition-colors ${
@@ -26,7 +26,7 @@ const desktopClass = (isActive: boolean) =>
 
 const mobileClass = (isActive: boolean) =>
   `rounded px-3 py-2 text-base font-medium ${
-    isActive ? "text-accent-600" : "text-slate-500 hover:text-slate-100"
+    isActive ? "text-accent-600" : "text-slate-400 hover:text-slate-100"
   }`;
 
 export default function Header() {
@@ -48,7 +48,7 @@ export default function Header() {
         <Link
           to="/"
           aria-label="Home"
-          className="font-mono text-sm font-bold tracking-tight text-slate-100 hover:text-accent-600 transition-colors"
+          className="font-mono text-sm font-medium tracking-tight text-slate-100 hover:text-accent-600 transition-colors"
         >
           JP
           <span className="text-accent-600"> · </span>
@@ -56,25 +56,15 @@ export default function Header() {
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">
-          {navigation.map((item) =>
-            item.isRoute ? (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) => desktopClass(isActive)}
-              >
-                {item.name}
-              </NavLink>
-            ) : (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={desktopClass(false)}
-              >
-                {item.name}
-              </Link>
-            ),
-          )}
+          {navigation.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={desktopClass(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
         </div>
 
         <button
@@ -83,7 +73,7 @@ export default function Header() {
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="inline-flex h-9 w-9 items-center justify-center rounded border border-slate-800 text-slate-500 hover:text-slate-100 md:hidden"
+          className="inline-flex h-9 w-9 items-center justify-center rounded border border-slate-800 text-slate-400 hover:text-slate-100 md:hidden"
         >
           {isMenuOpen ? (
             <X className="h-4 w-4" />
@@ -100,7 +90,7 @@ export default function Header() {
         >
           <div className="flex flex-col gap-1">
             {mobileNavigation.map((item) =>
-              item.isRoute ? (
+              item.path === "/projects" ? (
                 <NavLink
                   key={item.path}
                   to={item.path}
