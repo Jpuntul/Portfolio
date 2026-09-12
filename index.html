@@ -2,16 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/Portfolio/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#04070f" />
-    <!-- Apply dark class before first paint to avoid flash -->
-    <script>
-      (function() {
-        var stored = localStorage.getItem('theme');
-        if (stored !== 'light') document.documentElement.classList.add('dark');
-      })();
-    </script>
 
     <!-- SPA redirect handler for GitHub Pages (see public/404.html) -->
     <script type="text/javascript">
@@ -33,45 +26,60 @@
       })(window.location);
     </script>
 
-    <!-- Primary -->
+    <meta name="author" content="Jutipong Puntuleng" />
+
+    <!-- Replaced at build time by scripts/prerender.ts with preload links for
+         the hashed above-the-fold font files. -->
+    <!--preload:fonts-->
+
+    <!--
+      Everything between the seo markers is REGENERATED PER ROUTE by
+      scripts/prerender.ts after `vite build`. Edit the homepage values here;
+      the per-route values live in that script. Do not remove the markers.
+    -->
+    <!--seo:start-->
     <title>Jutipong Puntuleng — Full-Stack Software Engineer</title>
-    <meta name="title" content="Jutipong Puntuleng — Full-Stack Software Engineer" />
     <meta
       name="description"
-      content="Full-stack software engineer building backend systems, real-time apps, and developer tools. Concordia B.Eng. Software Engineering, 2026. Open to roles from July 2026."
+      content="Full-stack software engineer building backend systems, real-time apps, and developer tools. Concordia B.Eng. Software Engineering, 2026. Open to remote or Bangkok-based roles."
     />
-    <meta
-      name="keywords"
-      content="Jutipong Puntuleng, Software Engineer, Full Stack Developer, Backend Engineer, React, TypeScript, Django, Concordia University, Montreal, Bangkok, Portfolio"
-    />
-    <meta name="author" content="Jutipong Puntuleng" />
     <link rel="canonical" href="https://jpuntul.github.io/Portfolio/" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Jutipong Puntuleng" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://jpuntul.github.io/Portfolio/" />
-    <meta property="og:title" content="Jutipong Puntuleng — Full-Stack Software Engineer" />
+    <meta
+      property="og:title"
+      content="Jutipong Puntuleng — Full-Stack Software Engineer"
+    />
     <meta
       property="og:description"
       content="Full-stack software engineer building backend systems, real-time apps, and developer tools. Concordia B.Eng. Software Engineering, 2026."
     />
     <meta
       property="og:image"
-      content="https://jpuntul.github.io/Portfolio/images/profile.jpg"
+      content="https://jpuntul.github.io/Portfolio/images/og-card.png"
     />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://jpuntul.github.io/Portfolio/" />
-    <meta property="twitter:title" content="Jutipong Puntuleng — Full-Stack Software Engineer" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta
-      property="twitter:description"
+      property="og:image:alt"
+      content="Jutipong Puntuleng — Full-Stack Software Engineer, Concordia B.Eng. 2026"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Jutipong Puntuleng — Full-Stack Software Engineer"
+    />
+    <meta
+      name="twitter:description"
       content="Full-stack software engineer building backend systems, real-time apps, and developer tools. Concordia B.Eng. Software Engineering, 2026."
     />
     <meta
-      property="twitter:image"
-      content="https://jpuntul.github.io/Portfolio/images/profile.jpg"
+      name="twitter:image"
+      content="https://jpuntul.github.io/Portfolio/images/og-card.png"
     />
+    <!--seo:end-->
 
     <!-- JSON-LD Person schema -->
     <script type="application/ld+json">
